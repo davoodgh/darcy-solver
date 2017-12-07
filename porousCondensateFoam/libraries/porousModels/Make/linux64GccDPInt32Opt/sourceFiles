@@ -1,0 +1,3 @@
+SOURCE = \
+wellModel/well/well.C \
+wellModel/wellcase/wellcase.C 

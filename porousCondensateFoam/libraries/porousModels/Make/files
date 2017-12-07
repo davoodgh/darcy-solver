@@ -1,0 +1,9 @@
+
+
+wellModel/well/well.C
+
+wellModel/wellcase/wellcase.C
+
+LIB = $(FOAM_USER_LIBBIN)/libporousModels
+
+
