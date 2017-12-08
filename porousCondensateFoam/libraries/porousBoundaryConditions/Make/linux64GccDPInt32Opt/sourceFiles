@@ -1,3 +1,0 @@
-SOURCE = \
-darcyGradPressure/darcyGradPressure.C \
-darcyGradPressureAniso/darcyGradPressureAniso.C 
