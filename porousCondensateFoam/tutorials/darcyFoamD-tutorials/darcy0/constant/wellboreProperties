@@ -23,7 +23,9 @@ well.Pro1
 	   activate	                                                   1; 
            q	            q                [0 3 -1 0 0 0 0]	        1e-3;
            volume           volume           [0 3 0 0 0 0 0]	         100;
+	   activetimeplan                                                  1;
            timechangeplan   timechangeplan   [0 0 1 0 0 0 0]	         100;
+	   qchangeplan      qchangeplan      [0 3 -1 0 0 0 0]	        1e-3;
            radius           radius           [0 1 0 0 0 0 0]	           1;
            height           height           [0 1 0 0 0 0 0]	         100;
            pb               pb               [1 -1 -2 0 0 0 0]	         100;
@@ -40,7 +42,9 @@ well.Inj1
 	   activate	                                                   1; 
            q	         q                   [0 3 -1 0 0 0 0]	        1e-3;
            volume           volume           [0 3 0 0 0 0 0]	         100;
+	   activetimeplan                                                  1;
            timechangeplan   timechangeplan   [0 0 1 0 0 0 0]	         100;
+	   qchangeplan      qchangeplan      [0 3 -1 0 0 0 0]	        1e-3;
            radius           radius           [0 1 0 0 0 0 0]	           1;
            height           height           [0 1 0 0 0 0 0]	         100;
            pb               pb               [1 -1 -2 0 0 0 0]	 100;
