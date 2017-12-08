@@ -39,21 +39,7 @@ boundaryField
     {
         type            empty;
     }
-    layer1_to_layer2
-    {
-        type            calculated;
-        value           uniform (0 0 0);
-    }
-    layer1_to_layer1Pro
-    {
-        type            calculated;
-        value           uniform (0 0 0);
-    }
-    layer1_to_layer2Inj
-    {
-        type            calculated;
-        value           uniform (0 0 0);
-    }
+    
 }
 
 
