@@ -46,8 +46,8 @@ SrcInj1 = qInj1/volumeInj1;
 
 //////plan
 
-volScalarField r_eq=0.28*  Foam::pow( xDim*xDim*Foam::pow(K2,0.5) + zDim*zDim*Foam::pow(K1,0.5),0.5 ) / (Foam::pow(K1,0.25) + Foam::pow(K2,0.25) );
-volScalarField coefInj1=mu*log(r_eq/radiusInj1)/(2*3.14*heightInj1*Foam::pow(Kx*Kz,0.5));
+//volScalarField r_eq=0.28*  Foam::pow( xDim*xDim*Foam::pow(K2,0.5) + zDim*zDim*Foam::pow(K1,0.5),0.5 ) / (Foam::pow(K1,0.25) + Foam::pow(K2,0.25) );
+//volScalarField coefInj1=mu*log(r_eq/radiusInj1)/(2*3.14*heightInj1*Foam::pow(Kx*Kz,0.5));
 
 // production1
 autoPtr<wellcase> wellPro1 = wellcase::New(mesh,wellboreProperties,"Pro1");
@@ -78,7 +78,7 @@ dimensionedScalar SrcPro1("SrcPro1",dimensionSet(0,0,-1,0,0),0.);
 SrcPro1 = qPro1/volumePro1;
 
 //plan
-volScalarField coefPro1=mu*log(r_eq/radiusPro1)/(2*3.14*heightPro1*Foam::pow(Kx*Kz,0.5));
+//volScalarField coefPro1=mu*log(r_eq/radiusPro1)/(2*3.14*heightPro1*Foam::pow(Kx*Kz,0.5));
 
 
 ////////////////////////////////////////////
