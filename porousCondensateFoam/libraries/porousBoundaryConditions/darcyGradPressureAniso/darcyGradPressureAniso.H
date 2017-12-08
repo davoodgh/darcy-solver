@@ -57,11 +57,8 @@ class darcyGradPressureAniso
 
     //- Name of the velocity and permeability fields used to calculate the tensorial wall BC in darcy's law
     word MfName_;
-    word MbfName_;
-    word phiName_;
     word UName_;
-    word LfName_;
-    word gradpcName_;		
+    word LfName_;	
 	
 public:
 
