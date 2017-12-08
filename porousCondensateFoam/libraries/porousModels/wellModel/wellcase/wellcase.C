@@ -41,7 +41,9 @@ Foam::wellcase::wellcase
     activate_(dict_.lookup("activate")),
     q_(dict_.lookup("q")),
     volume_(dict_.lookup("volume")),
+    activetimecondition_(dict_.lookup("activetimecondition")),
     timechangeplan_(dict_.lookup("timechangeplan")),
+    qchangeplan_(dict_.lookup("qchangeplan")),
     radius_(dict_.lookup("radius")),
     height_(dict_.lookup("height")),
     pb_(dict_.lookup("pb"))
