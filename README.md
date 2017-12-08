@@ -1,2 +1,2 @@
-# hello-world
+# porousmedia
 simulation of gas condensateFoam
