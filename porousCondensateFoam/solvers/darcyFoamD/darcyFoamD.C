@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
             Info<< "Time = " << runTime.timeName() << nl << endl;
 	    fvScalarMatrix pEqn
                 (
-                    fvm::laplacian(-Mf,p) + fvc::div(phiG) + (SrcPro1*WPro1*activatePro1) + 
+                    fvm::laplacian(-Mf,p) + fvc::div(phig) + (SrcPro1*WPro1*activatePro1) + 
                     - (SrcInj1*WInj1*activateInj1)
                 );
 
