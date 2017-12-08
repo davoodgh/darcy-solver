@@ -49,7 +49,9 @@ protected:
      dimensionedScalar activate_;
      dimensionedScalar q_;
      dimensionedScalar volume_;
+     dimensionedScalar activetimecondition_;
      dimensionedScalar timechangeplan_;
+     dimensionedScalar qchangeplan_;
      dimensionedScalar radius_;
      dimensionedScalar height_;
     dimensionedScalar pb_;
@@ -99,10 +101,20 @@ public:
         {
                 return volume_;
         } 
+        
+    const dimensionedScalar& activetimecondition() const
+        {
+                return activetimecondition_;
+        } 
 
     const dimensionedScalar& timechangeplan() const
         {
                 return timechangeplan_;
+        }
+        
+        const dimensionedScalar& qchangeplan() const
+        {
+                return qchangeplan_;
         }
  
      const dimensionedScalar& radius() const
