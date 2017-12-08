@@ -69,8 +69,8 @@ transportProperties.lookup("rho")
 volTensorField M ("M",K/mu);
 surfaceTensorField Kf(fvc::interpolate(K,"K"));
 surfaceTensorField Mf ("Mf",Kf/mu);
-surfaceScalarField phiG("phiG",(rho * Mf & g) & mesh.Sf());
-surfaceScalarField phiPc("phiPc", 0 * phiG);
+surfaceScalarField phig("phig",(rho * Mf & g) & mesh.Sf());
+surfaceTensorField Lf ("Lf",rho * Mf);
 
 
 /////////////////////////////
