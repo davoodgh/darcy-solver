@@ -54,7 +54,9 @@ protected:
      dimensionedScalar qchangeplan_;
      dimensionedScalar radius_;
      dimensionedScalar height_;
-    dimensionedScalar pb_;
+     dimensionedScalar deltax_;
+     dimensionedScalar deltay_;
+     dimensionedScalar pb_;
 
 public:
 
@@ -125,6 +127,16 @@ public:
      const dimensionedScalar& height() const
         {
                 return height_;
+        }
+        
+        const dimensionedScalar& deltax() const
+        {
+                return deltax_;
+        }
+        
+        const dimensionedScalar& deltay() const
+        {
+                return deltay_;
         }
 
      const dimensionedScalar& pb() const
