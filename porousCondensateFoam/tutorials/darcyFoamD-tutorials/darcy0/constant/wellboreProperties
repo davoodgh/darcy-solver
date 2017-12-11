@@ -28,7 +28,7 @@ well.Pro1
 	   qchangeplan      qchangeplan      [0 3 -1 0 0 0 0]	        1e-3;
            radius           radius           [0 1 0 0 0 0 0]	           1;
 	   deltax           deltax           [0 1 0 0 0 0 0]	           1;
-	   deltay           deltay           [0 1 0 0 0 0 0]	           1;
+	   deltaz           deltaz           [0 1 0 0 0 0 0]	           1;
            height           height           [0 1 0 0 0 0 0]	         100;
            pb               pb               [1 -1 -2 0 0 0 0]	         100;
 
@@ -50,7 +50,7 @@ well.Inj1
            radius           radius           [0 1 0 0 0 0 0]	           1;
            height           height           [0 1 0 0 0 0 0]	         100;
 	   deltax           deltax           [0 1 0 0 0 0 0]	           1;
-	   deltay           deltay           [0 1 0 0 0 0 0]	           1;
+	   deltaz           deltaz           [0 1 0 0 0 0 0]	           1;
            pb               pb               [1 -1 -2 0 0 0 0]	 100;
  
      	
