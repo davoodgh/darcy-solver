@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     #include "readGravitationalAcceleration.H"
     #include "createFields.H"
     # include "createK_member.H"
-    # include "calculatedeltaxy.H"
+    
     #include "createWellbores.H"
 
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
