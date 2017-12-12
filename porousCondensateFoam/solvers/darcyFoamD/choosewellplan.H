@@ -44,11 +44,11 @@ else
 
 volScalarField  explicitsourcetermInj1 = (coefconstqInj1*SrcInj1*WInj1)*activateInj1 + 
                                                 (coefunconstqInj1*WInj1*pbInj1/volumeInj1)*activateInj1;
-}
+
 /////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////
-{
+
 volScalarField  windexPro1 = (2*3.14*heightPro1*Foam::pow(Kx*Kz,0.5)) / (mu*log(r_eqPro1/radiusPro1));
 scalar qwellPro1 = 100;//gMax( windexPro1*p*WPro1 - windexPro1*pbPro1*WPro1 );   
 
