@@ -1,106 +1,212 @@
 
 
- volScalarField  windexInj1 = (2*3.14*heightInj1*Foam::pow(Kx*Kz,0.5)) / (mu*log(r_eqInj1/radiusInj1));
- scalar qwellInj1 = 100000;//gMin( (windexInj1*p*WInj1 - windexInj1*pbInj1*WInj1) );    
+/////////////////////////////////////////////////////////////////Injection 1///////////////////////////////////////////////////////////////////
 
-if ( activetimeconditionInj1.value()==1)
-
-  {
-    if ( runTime.value() <= timechangeplanInj1.value() )
-
-     { 
-        volScalarField coefunconstqInj1 = ( "coefunconstqInj1" ,windexInj1);
-        scalar coefconstqInj1 = 0;
-      
-     }
-
-   else
-       { 
-         volScalarField coefunconstqInj1 = ( "coefunconstqInj1" ,0*windexInj1);
-         scalar coefconstqInj1 = 1;
-        
-      }
-    } 
-
-else
-
-   {
-  
-    if ( qwellInj1 >= qchangeplanInj1.value() )
-
-      { 
-          volScalarField coefunconstqInj1 = ( "coefunconstqInj1" ,windexInj1);
-        scalar coefconstqInj1 = 0;
-       
-      }
-
-   else
-       { 
-           volScalarField coefunconstqInj1 = ( "coefunconstqInj1" ,0*windexInj1);
-         scalar coefconstqInj1 = 1;
-         
-       }
-  }
-
-volScalarField  explicitsourcetermInj1 = (coefconstqInj1*SrcInj1*WInj1)*activateInj1 + 
-                                                (coefunconstqInj1*WInj1*pbInj1/volumeInj1)*activateInj1;
-
-/////////////////////////////////////////////////////////////
-
-////////////////////////////////////////////////////////////////////////
-
-volScalarField  windexPro1 = (2*3.14*heightPro1*Foam::pow(Kx*Kz,0.5)) / (mu*log(r_eqPro1/radiusPro1));
-scalar qwellPro1 = 100;//gMax( windexPro1*p*WPro1 - windexPro1*pbPro1*WPro1 );   
-
-if ( activetimeconditionPro1.value()==1 )
-
- {
-
-  if ( runTime.value() >= timechangeplanPro1.value() )
-
-    { 
-      volScalarField coefunconstqPro1 = ( "coefunconstqPro1" ,windexPro1);
-      scalar coefconstqPro1 = 0;                                          
-    }
-
-  else
-      { 
-        volScalarField coefunconstqPro1 = ( "coefunconstqPro1" ,0*windexPro1);
-       scalar coefconstqPro1 = 1;
-      
-      }
- }
-
-else
-
-   {
-  
-    if ( qwellPro1 <= qchangeplanPro1.value() )
-
-     { 
-        volScalarField coefunconstqPro1 = ( "coefunconstqPro1" ,0*windexPro1);
-       scalar coefconstqPro1 = 1;
-      
-     }
-
-    else
+if ( activeWellInj1 )
+{
+       ///////////////////////////////////////////////
+        if ( activeTimeConditionInj1 )
         { 
-         volScalarField coefunconstqPro1 = ( "coefunconstqPro1" ,windexPro1);
-         scalar coefconstqPro1 = 0;
-        
-        }
- }
-volScalarField  explicitsourcetermPro1 = (coefconstqPro1*SrcPro1*WPro1)*activatePro1 +
-                                              (coefunconstqPro1*WPro1*pbPro1/volumePro1)*activatePro1;
+           if ( runTime.value() <= timeConditionInj1 )
+           {
+               if      ( lessTimeConditionPlanInj1 == " pConst " )  # include "pConstPlan.H"
+               else if ( lessTimeConditionPlanInj1 == " qConst " )  # include "qConstPlan.H"
+
+           }  ////for runTime.value() <= timeConditionInj1
+
+           if ( runTime.value() > timeConditionInj1 )
+           {
+
+              if      ( moreTimeConditionPlanInj1 == " pConst " )  # include "pConstPlan.H"
+              else if ( moreTimeConditionPlanInj1 == " qConst " )  # include "qConstPlan.H"
+
+           }  ////for runTime.value() > timeConditionInj1
+      
+          else
+          {
+
+           FatalErrorIn
+          (
+            "in chooseWellPlan.H"
+          )
+          << "type of plan unrecongnized : pConst and qConst available" 
+          << exit(FatalError);
+
+          }
+
+        }   /// for activeTimeConditionInj1
+
+        /////////////////////////////////////////////////
+        if ( activeQConditionInj1 )
+        { 
+           if ( qWellInj1 <= qConditionInj1 )
+           {
+               if      ( lessQConditionPlanInj1 == " pConst " )  # include "pConstPlan.H"
+               else if ( lessQConditionPlanInj1 == " qConst " )  # include "qConstPlan.H"
+
+           }  ////for runTime.value() <= timeConditionInj1
+
+           if ( qWellInj1 > qConditionInj1 )
+           {
+
+              if      ( moreQConditionPlanInj1 == " pConst " )  # include "pConstPlan.H"
+              else if ( moreQConditionPlanInj1 == " qConst " )  # include "qConstPlan.H"
+
+           }  ////for runTime.value() > timeConditionInj1
+      
+          else
+          {
+
+           FatalErrorIn
+          (
+            "in chooseWellPlan.H"
+          )
+          << "type of plan unrecongnized : pConst and qConst available" 
+          << exit(FatalError);
+
+          }
+
+        }   /// for activeQConditionInj1
+
+        /////////////////////////////////////////////////
+        if ( activeGorConditionInj1 )
+        { 
+           if ( gorWellInj1 <= gorConditionInj1 )
+           {
+               if      ( lessGorConditionPlanInj1 == " pConst " )  # include "pConstPlan.H"
+               else if ( lessGorConditionPlanInj1 == " qConst " )  # include "qConstPlan.H"
+
+           }  ////for runTime.value() <= gorConditionInj1
+
+           if ( gorWellInj1 > gorConditionInj1 )
+           {
+
+              if      ( moreGorConditionPlanInj1 == " pConst " )  # include "pConstPlan.H"
+              else if ( moreGorConditionPlanInj1 == " qConst " )  # include "qConstPlan.H"
+
+           }  ////for runTime.value() > timeConditionInj1
+      
+          else
+          {
+
+           FatalErrorIn
+          (
+            "in chooseWellPlan.H"
+          )
+          << "type of plan unrecongnized : pConst and qConst available" 
+          << exit(FatalError);
+
+          }
+
+        }   /// for activeGorConditionInj1    
+     
+
+} ////for activeWellInj1
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
 
+/////////////////////////////////////////////////////////Production1///////////////////////////////////////////////////////////////////////////
 
+if ( activeWellPro1 )
+{
+       ///////////////////////////////////////////////
+        if ( activeTimeConditionPro1 )
+        { 
+           if ( runTime.value() <= timeConditionPro1 )
+           {
+               if      ( lessTimeConditionPlanPro1 == " pConst " )  # include "pConstPlan.H"
+               else if ( lessTimeConditionPlanPro1 == " qConst " )  # include "qConstPlan.H"
 
+           }  ////for runTime.value() <= timeConditionPro1
 
- 
+           if ( runTime.value() > timeConditionPro1 )
+           {
 
+              if      ( moreTimeConditionPlanPro1 == " pConst " )  # include "pConstPlan.H"
+              else if ( moreTimeConditionPlanPro1 == " qConst " )  # include "qConstPlan.H"
 
+           }  ////for runTime.value() > timeConditionPro1
+      
+          else
+          {
 
+           FatalErrorIn
+          (
+            "in chooseWellPlan.H"
+          )
+          << "type of plan unrecongnized : pConst and qConst available" 
+          << exit(FatalError);
 
+          }
+
+        }   /// for activeTimeConditionPro1
+
+        /////////////////////////////////////////////////
+        if ( activeQConditionPro1 )
+        { 
+           if ( qWellPro1 <= qConditionPro1 )
+           {
+               if      ( lessQConditionPlanPro1 == " pConst " )  # include "pConstPlan.H"
+               else if ( lessQConditionPlanPro1 == " qConst " )  # include "qConstPlan.H"
+
+           }  ////for runTime.value() <= timeConditionInj1
+
+           if ( qWellPro1 > qConditionPro1 )
+           {
+
+              if      ( moreQConditionPlanPro1 == " pConst " )  # include "pConstPlan.H"
+              else if ( moreQConditionPlanPro1 == " qConst " )  # include "qConstPlan.H"
+
+           }  ////for runTime.value() > timeConditionPro1
+      
+          else
+          {
+
+           FatalErrorIn
+          (
+            "in chooseWellPlan.H"
+          )
+          << "type of plan unrecongnized : pConst and qConst available" 
+          << exit(FatalError);
+
+          }
+
+        }   /// for activeQConditionInj1
+
+        /////////////////////////////////////////////////
+        if ( activeGorConditionPro1 )
+        { 
+           if ( gorWellPro1 <= gorConditionPro1 )
+           {
+               if      ( lessGorConditionPlanPro1 == " pConst " )  # include "pConstPlan.H"
+               else if ( lessGorConditionPlanPro1 == " qConst " )  # include "qConstPlan.H"
+
+           }  ////for runTime.value() <= gorConditionInj1
+
+           if ( gorWellPro1 > gorConditionPro1 )
+           {
+
+              if      ( moreGorConditionPlanPro1 == " pConst " )  # include "pConstPlan.H"
+              else if ( moreGorConditionPlanPro1 == " qConst " )  # include "qConstPlan.H"
+
+           }  ////for runTime.value() > timeConditionPro1
+      
+          else
+          {
+
+           FatalErrorIn
+          (
+            "in chooseWellPlan.H"
+          )
+          << "type of plan unrecongnized : pConst and qConst available" 
+          << exit(FatalError);
+
+          }
+
+        }   /// for activeGorConditionPro1    
+     
+
+} ////for activeWellPro1
