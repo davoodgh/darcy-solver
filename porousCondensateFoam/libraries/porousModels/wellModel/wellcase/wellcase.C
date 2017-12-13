@@ -38,12 +38,28 @@ Foam::wellcase::wellcase
 )
     :  
     well(mesh,wellboreProperties,wellName),
-    activate_(dict_.lookup("activate")),
-    q_(dict_.lookup("q")),
+    activeWell_(dict_.lookup("activeWell_")),
+
+    activeTimeCondition_(dict_.lookup("activeTimeCondition_")),
+    timeCondition_(dict_.lookup("timeCondition_")),
+    
+    activeQCondition_(dict_.lookup("activeQCondition_")),
+    qCondition_(dict_.lookup("qCondition_")),
+
+    activeGorCondition_(dict_.lookup("activeGorCondition_")),
+    gorCondition_(dict_.lookup("gorCondition_")),
+ 
+    lessTimeConditionPlan_(dict_.lookup("lessTimeConditionPlan_")),
+    moreTimeConditionPlan_(dict_.lookup("moreTimeConditionPlan_")),
+
+    lessQConditionPlan_(dict_.lookup("lessQConditionPlan_")),
+    moreQConditionPlan_(dict_.lookup("moreQConditionPlan_")),
+
+    lessGorConditionPlan_(dict_.lookup("lessGorConditionPlan_")),
+    moreGorConditionPlan_(dict_.lookup("moreGorConditionPlan_")),
+    
     volume_(dict_.lookup("volume")),
-    activetimecondition_(dict_.lookup("activetimecondition")),
-    timechangeplan_(dict_.lookup("timechangeplan")),
-    qchangeplan_(dict_.lookup("qchangeplan")),
+    qConstant_(dict_.lookup("qConstant")),
     radius_(dict_.lookup("radius")),
     height_(dict_.lookup("height")),
     deltax_(dict_.lookup("deltax")),
