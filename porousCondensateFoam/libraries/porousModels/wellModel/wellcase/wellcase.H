@@ -46,17 +46,33 @@ class wellcase
 protected:
 
     
-     dimensionedScalar activate_;
-     dimensionedScalar q_;
-     dimensionedScalar volume_;
-     dimensionedScalar activetimecondition_;
-     dimensionedScalar timechangeplan_;
-     dimensionedScalar qchangeplan_;
-     dimensionedScalar radius_;
-     dimensionedScalar height_;
-     dimensionedScalar deltax_;
-     dimensionedScalar deltaz_;
-     dimensionedScalar pb_;
+     dimensionedScalar              activeWell_;
+
+     dimensionedScalar     activeTimeCondition_;
+     dimensionedScalar           timeCondition_;
+
+     dimensionedScalar        activeQCondition_;
+     dimensionedScalar              qCondition_;
+
+     dimensionedScalar      activeGorCondition_;
+     dimensionedScalar            gorCondition_;
+
+     word                lessTimeConditionPlan_;
+     word                moreTimeConditionPlan_;
+ 
+     word                   lessQConditionPlan_;
+     word                   moreQConditionPlan_;
+     
+     word                 lessGorConditionPlan_;
+     word                 moreGorConditionPlan_;
+     
+     dimensionedScalar               qConstant_;
+     dimensionedScalar                  volume_;
+     dimensionedScalar                  radius_;
+     dimensionedScalar                  height_;
+     dimensionedScalar                  deltax_;
+     dimensionedScalar                  deltaz_;
+     dimensionedScalar                      pb_;
 
 public:
 
@@ -89,36 +105,81 @@ public:
             return name_;
         }
     
-    const dimensionedScalar& activate() const
+    const dimensionedScalar& activeWell() const
         {
-                return activate_;
+                return activeWell_;
         }
    
-    const dimensionedScalar& q() const
+    const dimensionedScalar& activeTimeCondition() const
         {
-                return q_;
+                return activeTimeCondition_;
         } 
      
-    const dimensionedScalar& volume() const
+    const dimensionedScalar& timeCondition() const
+        {
+                return timeCondition_;
+        } 
+        
+    const dimensionedScalar& activeQCondition() const
+        {
+                return activeQCondition_;
+        } 
+
+    const dimensionedScalar& qCondition() const
+        {
+                return qCondition_;
+        }
+        
+    const dimensionedScalar& activeGorCondition() const
+        {
+                return activeGorCondition_;
+        }
+
+     const dimensionedScalar& gorCondition() const
+        {
+                return gorCondition_;
+        }
+
+     const word& lessTimeConditionPlan() const
+        {
+                return lessTimeConditionPlan_;
+        }
+ 
+     const word& moreTimeConditionPlan() const
+        {
+                return moreTimeConditionPlan_;
+        } 
+
+     const word& lessQConditionPlan() const
+        {
+                return lessQConditionPlan_;
+        } 
+
+     const word& moreQConditionPlan() const
+        {
+                return moreQConditionPlan_;
+        } 
+
+     const word& lessGorConditionPlan() const
+        {
+                return lessGorConditionPlan_;
+        } 
+
+     const word& moreGorConditionPlan() const
+        {
+                return moreGorConditionPlan_;
+        } 
+
+     const dimensionedScalar& qConstant() const
+        {
+                return qConstant_;
+        }
+   
+     const dimensionedScalar& volume() const
         {
                 return volume_;
         } 
-        
-    const dimensionedScalar& activetimecondition() const
-        {
-                return activetimecondition_;
-        } 
-
-    const dimensionedScalar& timechangeplan() const
-        {
-                return timechangeplan_;
-        }
-        
-        const dimensionedScalar& qchangeplan() const
-        {
-                return qchangeplan_;
-        }
- 
+     
      const dimensionedScalar& radius() const
         {
                 return radius_;
@@ -129,7 +190,7 @@ public:
                 return height_;
         }
         
-        const dimensionedScalar& deltax() const
+      const dimensionedScalar& deltax() const
         {
                 return deltax_;
         }
