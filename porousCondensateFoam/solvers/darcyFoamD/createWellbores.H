@@ -15,15 +15,31 @@ IOdictionary wellboreProperties
 );
 
 
-
 // Injection1 
 autoPtr<wellcase> wellInj1 = wellcase::New(mesh,wellboreProperties,"Inj1");
-const dimensionedScalar& activateInj1 = wellInj1->activate();
-const dimensionedScalar& qInj1 = wellInj1->q();
+const dimensionedScalar& activeWellInj1 = wellInj1->activeWell();
+
+const dimensionedScalar& activeTimeConditionInj1 = wellInj1->activeTimeCondition();
+const dimensionedScalar& timeConditionInj1 = wellInj1->timeCondition();
+
+const dimensionedScalar& activeQConditionInj1 = wellInj1->activeQCondition();
+const dimensionedScalar& qConditionInj1 = wellInj1->qCondition();
+
+const dimensionedScalar& activeGorConditionInj1 = wellInj1->activeGorCondition();
+const dimensionedScalar& gorConditionInj1 = wellInj1->gorCondition();
+
+const word& lessTimeConditionPlanInj1 = wellInj1->lessTimeConditionPlan();
+const word& moreTimeConditionPlanInj1 = wellInj1->moreTimeConditionPlan();
+
+const word& lessQConditionPlanInj1 = wellInj1->lessQConditionPlan();
+const word& moreqConditionPlanInj1 = wellInj1->moreqConditionPlan();
+
+const word& lessGorConditionPlanInj1 = wellInj1->lessGorConditionPlan();
+const word& moreGorConditionPlanInj1 = wellInj1->moreGorConditionPlan();
+
+const dimensionedScalar& qConstantInj1 = wellInj1->qConstant();
+
 const dimensionedScalar& volumeInj1 = wellInj1->volume();
-const dimensionedScalar& activetimeconditionInj1 = wellInj1->activetimecondition();
-const dimensionedScalar& timechangeplanInj1 = wellInj1->timechangeplan();
-const dimensionedScalar& qchangeplanInj1 = wellInj1->qchangeplan();
 const dimensionedScalar& radiusInj1 = wellInj1->radius();
 const dimensionedScalar& heightInj1 = wellInj1->height();
 const dimensionedScalar& deltaxInj1 = wellInj1->deltax();
@@ -48,32 +64,67 @@ volScalarField WInj1
 dimensionedScalar SrcInj1("SrcInj1",dimensionSet(0,0,-1,0,0),0.);
 SrcInj1 = qInj1/volumeInj1;
 
-//////plan
+//Fields for constant q plan in wellInj1
+
+volScalarField coefQConstantInj1
+(
+    IOobject
+    (
+        "coefQConstantInj1",
+        runTime.timeName(),
+        mesh,
+        IOobject::NO_READ,
+        IOobject::NO_WRITE
+    ),
+    mesh,
+dimensionedScalar  ("coefQConstantInj1",dimensionSet (0,0,0,0,0,0,0),0)
+);
+
+//Fields for constant pressure plan in wellInj1
+
+volScalarField coefPConstantInj1
+(
+    IOobject
+    (
+        "coefPConstantInj1",
+        runTime.timeName(),
+        mesh,
+        IOobject::NO_READ,
+        IOobject::NO_WRITE
+    ),
+    mesh,
+dimensionedScalar  ("coefPConstantInj1",dimensionSet (-1,4,1,0,0,0,0),0)
+);
 
 volScalarField r_eqInj1=0.28*  Foam::pow( deltaxInj1*deltaxInj1*Foam::pow(K2,0.5) + deltazInj1*deltazInj1*Foam::pow(K1,0.5),0.5 ) / (Foam::pow(K1,0.25) + Foam::pow(K2,0.25) );
-//volScalarField coefInj1=mu*log(r_eq/radiusInj1)/(2*3.14*heightInj1*Foam::pow(Kx*Kz,0.5));
-//volScalarField coefunconstqInj1
-//(
-   // IOobject
-   // (
-    //    "coefunconstqInj1",
-     //   runTime.timeName(),
-      //  mesh,
-      //  IOobject::NO_READ,
-      //  IOobject::NO_WRITE
-   // ),
-   // mesh,
-//dimensionedScalar  ("coefunconstqInj1",dimensionSet (-1,4,1,0,0,0,0),0)
-//);
+
+volScalarField  wellIndexInj1 = (2*3.14*heightInj1*Foam::pow(Kx*Kz,0.5)) / (mu*log(r_eqInj1/radiusInj1));
 
 // production1
 autoPtr<wellcase> wellPro1 = wellcase::New(mesh,wellboreProperties,"Pro1");
-const dimensionedScalar& activatePro1 = wellPro1->activate();
-const dimensionedScalar& qPro1 = wellPro1->q();
+const dimensionedScalar& activeWellPro1 = wellPro1->activeWell();
+
+const dimensionedScalar& activeTimeConditionPro1 = wellPro1->activeTimeCondition();
+const dimensionedScalar& timeConditionPro1 = wellPro1->timeCondition();
+
+const dimensionedScalar& activeQConditionPro1 = wellPro1->activeQCondition();
+const dimensionedScalar& qConditionPro1 = wellPro1->qCondition();
+
+const dimensionedScalar& activeGorConditionPro1 = wellPro1->activeGorCondition();
+const dimensionedScalar& gorConditionPro1 = wellPro1->gorCondition();
+
+const word& lessTimeConditionPlanPro1 = wellPro1->lessTimeConditionPlan();
+const word& moreTimeConditionPlanPro1 = wellPro1->moreTimeConditionPlan();
+
+const word& lessQConditionPlanPro1 = wellPro1->lessQConditionPlan();
+const word& moreqConditionPlanPro1 = wellPro1->moreqConditionPlan();
+
+const word& lessGorConditionPlanPro1 = wellPro1->lessGorConditionPlan();
+const word& moreGorConditionPlanPro1 = wellPro1->moreGorConditionPlan();
+
+const dimensionedScalar& qConstantPro1 = wellPro1->qConstant();
+
 const dimensionedScalar& volumePro1 = wellPro1->volume();
-const dimensionedScalar& activetimeconditionPro1 = wellPro1->activetimecondition();
-const dimensionedScalar& timechangeplanPro1 = wellPro1->timechangeplan();
-const dimensionedScalar& qchangeplanPro1 = wellPro1->qchangeplan();
 const dimensionedScalar& radiusPro1 = wellPro1->radius();
 const dimensionedScalar& heightPro1 = wellPro1->height();
 const dimensionedScalar& deltaxPro1 = wellPro1->deltax();
@@ -98,24 +149,41 @@ volScalarField WPro1
 dimensionedScalar SrcPro1("SrcPro1",dimensionSet(0,0,-1,0,0),0.);
 SrcPro1 = qPro1/volumePro1;
 
-//plan
+//Fields for constant q plan in wellPro1
+
+volScalarField coefQConstantPro1
+(
+    IOobject
+    (
+        "coefQConstantPro1",
+        runTime.timeName(),
+        mesh,
+        IOobject::NO_READ,
+        IOobject::NO_WRITE
+    ),
+    mesh,
+dimensionedScalar  ("coefQConstantPro1",dimensionSet (0,0,0,0,0,0,0),0)
+);
+
+
+//Fields for constant pressure plan in wellPro1
+
+volScalarField coefPConstantPro1
+(
+    IOobject
+    (
+        "coefPConstantPro1",
+        runTime.timeName(),
+        mesh,
+        IOobject::NO_READ,
+        IOobject::NO_WRITE
+    ),
+    mesh,
+dimensionedScalar  ("coefPConstantPro1",dimensionSet (-1,4,1,0,0,0,0),0)
+);
+
 volScalarField  r_eqPro1=0.28*  Foam::pow( deltaxPro1*deltaxPro1*Foam::pow(K2,0.5) + deltazPro1*deltazPro1*Foam::pow(K1,0.5),0.5 ) / (Foam::pow(K1,0.25) + Foam::pow(K2,0.25) );
 
-//volScalarField coefPro1=mu*log(r_eq/radiusPro1)/(2*3.14*heightPro1*Foam::pow(Kx*Kz,0.5));
-
-//volScalarField coefunconstqPro1
-//(
-    //IOobject
-    //(
-      //  "coefunconstqPro1",
-     //   runTime.timeName(),
-      //  mesh,
-       // IOobject::NO_READ,
-       // IOobject::NO_WRITE
-    ///),
-  //  mesh,
-//dimensionedScalar  ("coefunconstqPro1",dimensionSet (-1,4,1,0,0,0,0),0)
-///);
-
-
+volScalarField  wellIndexPro1 = (2*3.14*heightInj1*Foam::pow(Kx*Kz,0.5)) / (mu*log(r_eqInj1/radiusInj1));
+ 
 ////////////////////////////////////////////
