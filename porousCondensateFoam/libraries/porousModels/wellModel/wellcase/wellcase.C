@@ -57,9 +57,9 @@ Foam::wellcase::wellcase
 
     lessGorConditionPlan_(dict_.lookup("lessGorConditionPlan_")),
     moreGorConditionPlan_(dict_.lookup("moreGorConditionPlan_")),
-    
-    volume_(dict_.lookup("volume")),
+        
     qConstant_(dict_.lookup("qConstant")),
+    volume_(dict_.lookup("volume")),
     radius_(dict_.lookup("radius")),
     height_(dict_.lookup("height")),
     deltax_(dict_.lookup("deltax")),
