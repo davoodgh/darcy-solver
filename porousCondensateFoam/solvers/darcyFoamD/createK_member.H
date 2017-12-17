@@ -14,10 +14,10 @@ IOdictionary K_member
 
 
 dimensionedVector d_x (K_member.lookup("d_x"));
-dimensionedVector d_z (K_member.lookup("d_z"));
+dimensionedVector d_y (K_member.lookup("d_y"));
 
 volScalarField Kx ("Kx",K & d_x & d_x);
-volScalarField Kz ("Kz",K & d_z & d_z);
+volScalarField Ky ("Ky",K & d_y & d_y);
 
-volScalarField K1 ("K1",Kx/Kz);
-volScalarField K2 ("K2",Kz/Kx);
+volScalarField K1 ("K1",Kx/Ky);
+volScalarField K2 ("K2",Ky/Kx);
