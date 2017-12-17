@@ -43,7 +43,7 @@ const dimensionedScalar& volumeInj1 = wellInj1->volume();
 const dimensionedScalar& radiusInj1 = wellInj1->radius();
 const dimensionedScalar& heightInj1 = wellInj1->height();
 const dimensionedScalar& deltaxInj1 = wellInj1->deltax();
-const dimensionedScalar& deltazInj1 = wellInj1->deltaz();
+const dimensionedScalar& deltayInj1 = wellInj1->deltay();
 const dimensionedScalar& pbInj1 = wellInj1->pb();
 
 Info<< "Reading field WInj1 (injection wellbore)\n" << endl;
@@ -96,9 +96,9 @@ volScalarField coefPConstantInj1
 dimensionedScalar  ("coefPConstantInj1",dimensionSet (-1,4,1,0,0,0,0),0)
 );
 
-volScalarField r_eqInj1=0.28*  Foam::pow( deltaxInj1*deltaxInj1*Foam::pow(K2,0.5) + deltazInj1*deltazInj1*Foam::pow(K1,0.5),0.5 ) / (Foam::pow(K1,0.25) + Foam::pow(K2,0.25) );
+volScalarField r_eqInj1=0.28*  Foam::pow( deltaxInj1*deltaxInj1*Foam::pow(K2,0.5) + deltayInj1*deltayInj1*Foam::pow(K1,0.5),0.5 ) / (Foam::pow(K1,0.25) + Foam::pow(K2,0.25) );
 
-volScalarField  wellIndexInj1 = (2*3.14*heightInj1*Foam::pow(Kx*Kz,0.5)) / (mu*log(r_eqInj1/radiusInj1));
+volScalarField  wellIndexInj1 = (2*3.14*heightInj1*Foam::pow(Kx*Ky,0.5)) / (mu*log(r_eqInj1/radiusInj1));
 ///
 
 volScalarField explicitSourceTermInj1
@@ -145,7 +145,7 @@ const dimensionedScalar& volumePro1 = wellPro1->volume();
 const dimensionedScalar& radiusPro1 = wellPro1->radius();
 const dimensionedScalar& heightPro1 = wellPro1->height();
 const dimensionedScalar& deltaxPro1 = wellPro1->deltax();
-const dimensionedScalar& deltazPro1 = wellPro1->deltaz();
+const dimensionedScalar& deltayPro1 = wellPro1->deltay();
 const dimensionedScalar& pbPro1 = wellPro1->pb();
 
 Info<< "Reading field WPro1 (production wellbore)\n" << endl;
@@ -199,9 +199,9 @@ volScalarField coefPConstantPro1
 dimensionedScalar  ("coefPConstantPro1",dimensionSet (-1,4,1,0,0,0,0),0)
 );
 
-volScalarField  r_eqPro1=0.28*  Foam::pow( deltaxPro1*deltaxPro1*Foam::pow(K2,0.5) + deltazPro1*deltazPro1*Foam::pow(K1,0.5),0.5 ) / (Foam::pow(K1,0.25) + Foam::pow(K2,0.25) );
+volScalarField  r_eqPro1=0.28*  Foam::pow( deltaxPro1*deltaxPro1*Foam::pow(K2,0.5) + deltayPro1*deltayPro1*Foam::pow(K1,0.5),0.5 ) / (Foam::pow(K1,0.25) + Foam::pow(K2,0.25) );
 
-volScalarField  wellIndexPro1 = (2*3.14*heightInj1*Foam::pow(Kx*Kz,0.5)) / (mu*log(r_eqInj1/radiusInj1));
+volScalarField  wellIndexPro1 = (2*3.14*heightInj1*Foam::pow(Kx*Ky,0.5)) / (mu*log(r_eqInj1/radiusInj1));
 
 volScalarField explicitSourceTermPro1
 (
