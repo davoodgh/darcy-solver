@@ -71,7 +71,7 @@ protected:
      dimensionedScalar                  radius_;
      dimensionedScalar                  height_;
      dimensionedScalar                  deltax_;
-     dimensionedScalar                  deltaz_;
+     dimensionedScalar                  deltay_;
      dimensionedScalar                      pb_;
 
 public:
@@ -197,7 +197,7 @@ public:
         
         const dimensionedScalar& deltaz() const
         {
-                return deltaz_;
+                return deltay_;
         }
 
      const dimensionedScalar& pb() const
