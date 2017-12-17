@@ -195,7 +195,7 @@ public:
                 return deltax_;
         }
         
-        const dimensionedScalar& deltaz() const
+        const dimensionedScalar& deltay() const
         {
                 return deltay_;
         }
