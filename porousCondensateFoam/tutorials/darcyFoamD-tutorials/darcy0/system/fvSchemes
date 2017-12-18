@@ -39,9 +39,9 @@ laplacianSchemes
 
 interpolationSchemes
 {
-    default none;
+    default linear;
     K       linear;
-    //flux(U) linear;
+    interpolate(grad(p))  linear;
 }
 
 snGradSchemes
