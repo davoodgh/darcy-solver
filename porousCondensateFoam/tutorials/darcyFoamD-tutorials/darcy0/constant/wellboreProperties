@@ -1,0 +1,93 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  | =========                 |                                                 |
+  | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+  |  \\    /   O peration     | Version:  5.0                                   |
+  |   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+  |    \\/     M anipulation  |                                                 |
+  \*---------------------------------------------------------------------------*/
+FoamFile
+{
+  version     2.0;
+  format      ascii;
+  class       dictionary;
+  location    "constant";
+  object      wellboreProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+//////production1
+
+well.Pro1
+   {
+     
+	   activeWell	                    activeWell [ 0 0 0 0 0 0 0 ]                    1; 
+
+           activeTimeCondition              activeTimeCondition [ 0 0 0 0 0 0 0 ]           1;
+           timeCondition                    timeCondition [ 0 0 1 0 0 0 0 ]	           50;
+  
+           activeQCondition                 activeQCondition [ 0 0 0 0 0 0 0 ]              1;
+           qCondition                       qCondition [ 0 3 -1 0 0 0 0 ]	         1e-3;        
+           
+           activeGorCondition               activeGorCondition [ 0 0 0 0 0 0 0 ]            1;
+           gorCondition                     gorCondition [ 0 0 0 0 0 0 0 ]	          100;
+            
+           lessTimeConditionPlan            lessTimeConditionPlan [ 0 0 0 0 0 0 0 ]    qConst;
+           moreTimeConditionPlan            moreTimeConditionPlan [ 0 0 0 0 0 0 0 ]    pConst;
+           
+           lessQConditionPlan               lessQConditionPlan [ 0 0 0 0 0 0 0 ]       qConst;
+           moreQConditionPlan               moreQConditionPlan [ 0 0 0 0 0 0 0 ]       pConst;
+
+           lessGorConditionPlan             lessGorConditionPlan [ 0 0 0 0 0 0 0 ]     pConst;
+           moreGorConditionPlan             moreGorConditionPlan [ 0 0 0 0 0 0 0 ]     pConst;
+           
+           qConstant	                    qConstant [ 0 3 -1 0 0 0 0 ]                 2e-3;
+
+           volume                           volume [ 0 3 0 0 0 0 0 ]	                   12;
+           radius                           radius [ 0 1 0 0 0 0 0 ]	                    1;
+	   deltax                           deltax [ 0 1 0 0 0 0 0 ]	                    1;
+	   deltay                           deltay [ 0 1 0 0 0 0 0 ]	                    1;
+           height                           height [ 0 1 0 0 0 0 0 ]	                   12;
+           pb                               pb [ 1 -1 -2 0 0 0 0 ]	                  100;              //bottumhole Pressure// 
+	
+     
+   } 
+/////////////// 
+
+//////injection1
+
+well.Inj1
+   {  
+          activeWell	                   activeWell [ 0 0 0 0 0 0 0 ]                     1; 
+
+           activeTimeCondition             activeTimeCondition [ 0 0 0 0 0 0 0 ]            1;
+           timeCondition                   timeCondition [ 0 0 1 0 0 0 0 ]	           50;
+  
+           activeQCondition                activeTimeCondition [ 0 0 0 0 0 0 0 ]            1;
+           qCondition                      qCondition [ 0 3 -1 0 0 0 0 ]	         1e-3;        
+           
+           activeGorCondition              activeGorCondition [ 0 0 0 0 0 0 0 ]             1;
+           gorCondition                    gorCondition [ 0 0 0 0 0 0 0 ]	           64;
+            
+           lessTimeConditionPlan           lessTimeConditionPlan [ 0 0 0 0 0 0 0 ]     qConst;
+           moreTimeConditionPlan           moreTimeConditionPlan [ 0 0 0 0 0 0 0 ]     pConst;
+           
+           lessQConditionPlan              lessQConditionPlan [ 0 0 0 0 0 0 0 ]        qConst;
+           moreQConditionPlan              moreQConditionPlan [ 0 0 0 0 0 0 0 ]        pConst;
+
+           lessGorConditionPlan            lessGorConditionPlan [ 0 0 0 0 0 0 0 ]      pConst;
+           moreGorConditionPlan            moreGorConditionPlan [ 0 0 0 0 0 0 0 ]      pConst;
+           
+           qConstant	                   qConstant [ 0 3 -1 0 0 0 0 ]                  2e-3;
+
+           volume                          volume [ 0 3 0 0 0 0 0 ]	                   12;
+           radius                          radius [ 0 1 0 0 0 0 0 ]	                    1;
+	   deltax                          deltax [ 0 1 0 0 0 0 0 ]	                    1;
+	   deltay                          deltay [ 0 1 0 0 0 0 0 ]	                    1;
+           height                          height [ 0 1 0 0 0 0 0 ]	                   12;
+           pb                              pb [ 1 -1 -2 0 0 0 0 ]	                  100;            //bottumhole Pressure// 
+
+   } 
+///////////////  
+
+
+// ************************************************************************* //
