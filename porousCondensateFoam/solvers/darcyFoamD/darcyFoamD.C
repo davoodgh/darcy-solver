@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
             volVectorField U("U",((M & fvc::grad(p)) - (M & g) * rho ) );
           
           //  surfaceScalarField phip("phip",Mf & mesh.Sf());
-
+            runTime.write();
        
             Info<< "ExecutionTime = " << runTime.elapsedCpuTime() << " s"
             << "  ClockTime = " << runTime.elapsedClockTime() << " s"
