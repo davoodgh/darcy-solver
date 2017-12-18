@@ -38,25 +38,25 @@ Foam::wellcase::wellcase
 )
     :  
     well(mesh,wellboreProperties,wellName),
-    activeWell_(dict_.lookup("activeWell_")),
+    activeWell_(dict_.lookup("activeWell")),
 
-    activeTimeCondition_(dict_.lookup("activeTimeCondition_")),
-    timeCondition_(dict_.lookup("timeCondition_")),
+    activeTimeCondition_(dict_.lookup("activeTimeCondition")),
+    timeCondition_(dict_.lookup("timeCondition")),
     
-    activeQCondition_(dict_.lookup("activeQCondition_")),
-    qCondition_(dict_.lookup("qCondition_")),
+    activeQCondition_(dict_.lookup("activeQCondition")),
+    qCondition_(dict_.lookup("qCondition")),
 
-    activeGorCondition_(dict_.lookup("activeGorCondition_")),
-    gorCondition_(dict_.lookup("gorCondition_")),
+    activeGorCondition_(dict_.lookup("activeGorCondition")),
+    gorCondition_(dict_.lookup("gorCondition")),
  
-    lessTimeConditionPlan_(dict_.lookup("lessTimeConditionPlan_")),
-    moreTimeConditionPlan_(dict_.lookup("moreTimeConditionPlan_")),
+    lessTimeConditionPlan_(dict_.lookup("lessTimeConditionPlan")),
+    moreTimeConditionPlan_(dict_.lookup("moreTimeConditionPlan")),
 
-    lessQConditionPlan_(dict_.lookup("lessQConditionPlan_")),
-    moreQConditionPlan_(dict_.lookup("moreQConditionPlan_")),
+    lessQConditionPlan_(dict_.lookup("lessQConditionPlan")),
+    moreQConditionPlan_(dict_.lookup("moreQConditionPlan")),
 
-    lessGorConditionPlan_(dict_.lookup("lessGorConditionPlan_")),
-    moreGorConditionPlan_(dict_.lookup("moreGorConditionPlan_")),
+    lessGorConditionPlan_(dict_.lookup("lessGorConditionPlan")),
+    moreGorConditionPlan_(dict_.lookup("moreGorConditionPlan")),
         
     qConstant_(dict_.lookup("qConstant")),
     volume_(dict_.lookup("volume")),
