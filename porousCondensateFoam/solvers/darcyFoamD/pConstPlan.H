@@ -7,7 +7,7 @@ qWellInj1 = 0;
 forAll ( mesh.C(),cellI)
 {
 
-qWellInj1 = qWellInj1 + coefPConstantInj1[cellI] *( p[cellI] - pbInj1 )*WInj1[cellI] /volumeInj1;
+qWellInj1 = qWellInj1 + coefPConstantInj1[cellI] *( -p[cellI] + pbInj1 )*WInj1[cellI] /volumeInj1;
 
 }
 
