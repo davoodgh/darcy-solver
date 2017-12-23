@@ -10,11 +10,11 @@ if ( activeWellInj1.value()==1 )
            {
                if      ( lessTimeConditionPlanInj1 == " pConst " ) 
                {
-                       # include "pConstPlan.H"
+                       # include "pConstPlanInj1.H"
                }
                else if ( lessTimeConditionPlanInj1 == " qConst " ) 
                {
-                       # include "qConstPlan.H"
+                       # include "qConstPlanInj1.H"
                }
 
            }  ////for runTime.value() <= timeConditionInj1
@@ -24,11 +24,11 @@ if ( activeWellInj1.value()==1 )
 
               if      ( moreTimeConditionPlanInj1 == " pConst " )
               {  
-                      # include "pConstPlan.H"
+                      # include "pConstPlanInj1.H"
               }
               else if ( moreTimeConditionPlanInj1 == " qConst " )
               {  
-                      # include "qConstPlan.H"
+                      # include "qConstPlanInj1.H"
               }
 
            }  ////for runTime.value() > timeConditionInj1
@@ -54,11 +54,11 @@ if ( activeWellInj1.value()==1 )
            {
                if      ( lessQConditionPlanInj1 == " pConst " ) 
                { 
-                       # include "pConstPlan.H"
+                       # include "pConstPlanInj1.H"
                }
                else if ( lessQConditionPlanInj1 == " qConst " )  
                {
-                       # include "qConstPlan.H"
+                       # include "qConstPlanInj1.H"
                }
 
            }  ////for runTime.value() <= timeConditionInj1
@@ -68,11 +68,11 @@ if ( activeWellInj1.value()==1 )
 
               if      ( moreQConditionPlanInj1 == " pConst " ) 
               { 
-                      # include "pConstPlan.H"
+                      # include "pConstPlanInj1.H"
               }
               else if ( moreQConditionPlanInj1 == " qConst " )
               {  
-                      # include "qConstPlan.H"
+                      # include "qConstPlanInj1.H"
               }
 
            }  ////for runTime.value() > timeConditionInj1
@@ -98,11 +98,11 @@ if ( activeWellInj1.value()==1 )
            //{
                //if      ( lessGorConditionPlanInj1 == " pConst " )
                //{  
-                       //# include "pConstPlan.H"
+                       //# include "pConstPlanInj1.H"
                //}
                //else if ( lessGorConditionPlanInj1 == " qConst " ) 
                  //{ 
-                       //# include "qConstPlan.H"
+                       //# include "qConstPlanInj1.H"
                  //}
 
            //}  ////for runTime.value() <= gorConditionInj1
@@ -112,11 +112,11 @@ if ( activeWellInj1.value()==1 )
 
               //if      ( moreGorConditionPlanInj1 == " pConst " ) 
               //{ 
-                      //# include "pConstPlan.H"
+                      //# include "pConstPlanInj1.H"
               //}
               //else if ( moreGorConditionPlanInj1 == " qConst " ) 
                 //{ 
-                      //# include "qConstPlan.H"
+                      //# include "qConstPlanInj1.H"
                 //}
 
            //}  ////for runTime.value() > timeConditionInj1
@@ -141,9 +141,9 @@ if ( activeWellInj1.value()==1 )
 else if ( activeWellInj1.value()==0 )
 {
 
-coefPConstantInj1 = 0;
-coefQConstantInj1 = 0;
-explicitSourceTermInj1 = 0; 
+coefPConstantInj1 = 0*coefPConstantInj1;
+coefQConstantInj1 = 0*coefQConstantInj1;
+explicitSourceTermInj1 = 0*explicitSourceTermInj1; 
 
 }
 
@@ -163,11 +163,11 @@ if ( activeWellPro1.value()==1 )
            {
                if      ( lessTimeConditionPlanPro1 == " pConst " )
                { 
-                       # include "pConstPlan.H"
+                       # include "pConstPlanPro1.H"
                }
                else if ( lessTimeConditionPlanPro1 == " qConst " )
                {  
-                       # include "qConstPlan.H"
+                       # include "qConstPlanPro1.H"
                }
 
            }  ////for runTime.value() <= timeConditionPro1
@@ -177,11 +177,11 @@ if ( activeWellPro1.value()==1 )
 
               if      ( moreTimeConditionPlanPro1 == " pConst " ) 
               { 
-                      # include "pConstPlan.H"
+                      # include "pConstPlanPro1.H"
               }
               else if ( moreTimeConditionPlanPro1 == " qConst " ) 
               { 
-                      # include "qConstPlan.H"
+                      # include "qConstPlanPro1.H"
               }
 
            }  ////for runTime.value() > timeConditionPro1
@@ -207,11 +207,11 @@ if ( activeWellPro1.value()==1 )
            {
                if      ( lessQConditionPlanPro1 == " pConst " )
                {  
-                       # include "pConstPlan.H"
+                       # include "pConstPlanPro1.H"
                }
                else if ( lessQConditionPlanPro1 == " qConst " ) 
                { 
-                       # include "qConstPlan.H"
+                       # include "qConstPlanPro1.H"
                }
 
            }  ////for runTime.value() <= timeConditionInj1
@@ -221,11 +221,11 @@ if ( activeWellPro1.value()==1 )
 
               if      ( moreQConditionPlanPro1 == " pConst " ) 
               { 
-                      # include "pConstPlan.H"
+                      # include "pConstPlanPro1.H"
               }
               else if ( moreQConditionPlanPro1 == " qConst " ) 
               { 
-                      # include "qConstPlan.H"
+                      # include "qConstPlanPro1.H"
               }
 
            }  ////for runTime.value() > timeConditionPro1
@@ -251,11 +251,11 @@ if ( activeWellPro1.value()==1 )
            //{
                //if      ( lessGorConditionPlanPro1 == " pConst " ) 
                //{ 
-                       //# include "pConstPlan.H"
+                       //# include "pConstPlanPro1.H"
                //}
                //else if ( lessGorConditionPlanPro1 == " qConst " )
                //{  
-                       //# include "qConstPlan.H"
+                       //# include "qConstPlanPro1.H"
                //}
 
            //}  ////for runTime.value() <= gorConditionInj1
@@ -265,11 +265,11 @@ if ( activeWellPro1.value()==1 )
 
               //if      ( moreGorConditionPlanPro1 == " pConst " )
               //{  
-                      //# include "pConstPlan.H"
+                      //# include "pConstPlanPro1.H"
               //}
               //else if ( moreGorConditionPlanPro1 == " qConst " )
               //{  
-                      //# include "qConstPlan.H"
+                      //# include "qConstPlanPro1.H"
               //}
 
            //}  ////for runTime.value() > timeConditionPro1
@@ -294,9 +294,9 @@ if ( activeWellPro1.value()==1 )
 else if ( activeQConditionPro1.value()==0 )
 {
 
-coefPConstantPro1 = 0;
-coefQConstantPro1 = 0;
-explicitSourceTermPro1 = 0; 
+coefPConstantPro1 = 0*coefPConstantPro1;
+coefQConstantPro1 = 0*coefQConstantPro1;
+explicitSourceTermPro1 = 0*explicitSourceTermPro1; 
 
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
