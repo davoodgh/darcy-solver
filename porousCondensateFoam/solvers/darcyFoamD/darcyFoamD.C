@@ -40,8 +40,8 @@ int main(int argc, char *argv[])
             Info<< "Time = " << runTime.timeName() << nl << endl;
 	    fvScalarMatrix pEqn
                 (
-                    fvm::laplacian(-Mf,p) + fvc::div(phig) + fvm::Sp(coefPConstantPro1*WPro1/volumePro1,p)
-                   + fvm::Sp(coefPConstantInj1*WInj1/volumeInj1,p) - explicitSourceTermPro1 - explicitSourceTermInj1 
+                    fvm::laplacian(-Mf,p) + fvc::div(phig) + fvm::Sp(coefImplicitSourcePro1*coefPConstantPro1*WPro1/volumePro1,p)
+                   + fvm::Sp(coefImplicitSourceInj1*coefPConstantInj1*WInj1/volumeInj1,p) - explicitSourceTermPro1 - explicitSourceTermInj1 
                 );
 
 	    pEqn.solve();
