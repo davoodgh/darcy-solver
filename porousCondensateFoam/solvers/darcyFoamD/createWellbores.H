@@ -99,6 +99,8 @@ dimensionedScalar  ("coefPConstantInj1",dimensionSet (-1,4,1,0,0,0,0),0)
 volScalarField r_eqInj1=0.28*  Foam::pow( deltaxInj1*deltaxInj1*Foam::pow(K2,0.5) + deltayInj1*deltayInj1*Foam::pow(K1,0.5),0.5 ) / (Foam::pow(K1,0.25) + Foam::pow(K2,0.25) );
 
 volScalarField  wellIndexInj1 = (2*3.14*heightInj1*Foam::pow(Kx*Ky,0.5)) / (mu*log(r_eqInj1/radiusInj1));
+
+dimensionedScalar coefImplicitSourceInj1("coefImplicitSourceInj1",dimensionSet (0,0,0,0,0,0,0),0);
 ///
 
 volScalarField explicitSourceTermInj1
@@ -202,6 +204,8 @@ dimensionedScalar  ("coefPConstantPro1",dimensionSet (-1,4,1,0,0,0,0),0)
 volScalarField  r_eqPro1=0.28*  Foam::pow( deltaxPro1*deltaxPro1*Foam::pow(K2,0.5) + deltayPro1*deltayPro1*Foam::pow(K1,0.5),0.5 ) / (Foam::pow(K1,0.25) + Foam::pow(K2,0.25) );
 
 volScalarField  wellIndexPro1 = (2*3.14*heightInj1*Foam::pow(Kx*Ky,0.5)) / (mu*log(r_eqInj1/radiusInj1));
+
+dimensionedScalar coefImplicitSourcePro1("coefImplicitSourcePro1",dimensionSet (0,0,0,0,0,0,0),0);
 
 volScalarField explicitSourceTermPro1
 (
