@@ -1,5 +1,6 @@
 //////////////////////////////////////// Inj1
 
+coefImplicitSourceInj1 =1;
 coefPConstantInj1 = wellIndexInj1;
 explicitSourceTermInj1 = ( coefPConstantInj1*pbInj1*WInj1/volumeInj1 );
 
@@ -16,6 +17,7 @@ qWellInj1 = qWellInj1 + coefPConstantInj1[cellI] *( -p[cellI] + pbInj1 )*WInj1[c
 
 ///////////////////////////////////////// Pro1
 
+coefImplicitSourcePro1 =1;
 coefPConstantPro1 = wellIndexPro1;
 explicitSourceTermPro1= ( coefPConstantPro1*pbPro1*WPro1/volumePro1 );
 
