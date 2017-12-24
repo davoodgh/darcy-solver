@@ -142,7 +142,7 @@ else if ( activeWellInj1.value()==0 )
 {
 
 coefImplicitSourceInj1 = 0;
-explicitSourceTermInj1 = 0; 
+coefExplicitSourceInj1 = 0 
 
 }
 
@@ -294,7 +294,7 @@ else if ( activeQConditionPro1.value()==0 )
 {
 
 coefImplicitSourcePro1 = 0;
-explicitSourceTermPro1 = 0; 
+coefExplicitSourcePro1 = 0; 
 
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
