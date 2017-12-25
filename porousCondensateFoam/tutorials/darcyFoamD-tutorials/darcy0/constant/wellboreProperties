@@ -25,29 +25,29 @@ well.Pro1
            activeTimeCondition              activeTimeCondition [ 0 0 0 0 0 0 0 ]           1;
            timeCondition                    timeCondition [ 0 0 1 0 0 0 0 ]	           50;
   
-           activeQCondition                 activeQCondition [ 0 0 0 0 0 0 0 ]              1;
+           activeQCondition                 activeQCondition [ 0 0 0 0 0 0 0 ]              0;
            qCondition                       qCondition [ 0 3 -1 0 0 0 0 ]	         1e-3;        
            
-           activeGorCondition               activeGorCondition [ 0 0 0 0 0 0 0 ]            1;
+           activeGorCondition               activeGorCondition [ 0 0 0 0 0 0 0 ]            0;
            gorCondition                     gorCondition [ 0 0 0 0 0 0 0 ]	          100;
             
-           lessTimeConditionPlan            lessTimeConditionPlan [ 0 0 0 0 0 0 0 ]    qConst;
-           moreTimeConditionPlan            moreTimeConditionPlan [ 0 0 0 0 0 0 0 ]    pConst;
+           lessTimeConditionPlan                                                       qConst;
+           moreTimeConditionPlan                                                       qConst;
            
-           lessQConditionPlan               lessQConditionPlan [ 0 0 0 0 0 0 0 ]       qConst;
-           moreQConditionPlan               moreQConditionPlan [ 0 0 0 0 0 0 0 ]       pConst;
-
-           lessGorConditionPlan             lessGorConditionPlan [ 0 0 0 0 0 0 0 ]     pConst;
-           moreGorConditionPlan             moreGorConditionPlan [ 0 0 0 0 0 0 0 ]     pConst;
+           lessQConditionPlan                                                          pConst;
+           moreQConditionPlan                                                          qConst;
+  
+           lessGorConditionPlan                                                        pConst;
+           moreGorConditionPlan                                                        pConst;
            
-           qConstant	                    qConstant [ 0 3 -1 0 0 0 0 ]                 2e-3;
+           qConstant	                    qConstant [ 0 3 -1 0 0 0 0 ]                    5;
 
-           volume                           volume [ 0 3 0 0 0 0 0 ]	                   12;
-           radius                           radius [ 0 1 0 0 0 0 0 ]	                    1;
+           volume                           volume [ 0 3 0 0 0 0 0 ]	                    2;
+           radius                           radius [ 0 1 0 0 0 0 0 ]	               0.3048;
 	   deltax                           deltax [ 0 1 0 0 0 0 0 ]	                    1;
 	   deltay                           deltay [ 0 1 0 0 0 0 0 ]	                    1;
-           height                           height [ 0 1 0 0 0 0 0 ]	                   12;
-           pb                               pb [ 1 -1 -2 0 0 0 0 ]	                  100;              //bottumhole Pressure// 
+           height                           height [ 0 1 0 0 0 0 0 ]	                    2;
+           pb                               pb [ 1 -1 -2 0 0 0 0 ]	              200000;              //bottumhole Pressure// 
 	
      
    } 
@@ -62,28 +62,28 @@ well.Inj1
            activeTimeCondition             activeTimeCondition [ 0 0 0 0 0 0 0 ]            1;
            timeCondition                   timeCondition [ 0 0 1 0 0 0 0 ]	           50;
   
-           activeQCondition                activeTimeCondition [ 0 0 0 0 0 0 0 ]            1;
+           activeQCondition                activeQCondition [ 0 0 0 0 0 0 0 ]               0;
            qCondition                      qCondition [ 0 3 -1 0 0 0 0 ]	         1e-3;        
            
-           activeGorCondition              activeGorCondition [ 0 0 0 0 0 0 0 ]             1;
+           activeGorCondition              activeGorCondition [ 0 0 0 0 0 0 0 ]             0;
            gorCondition                    gorCondition [ 0 0 0 0 0 0 0 ]	           64;
+             
+           lessTimeConditionPlan                                                       qConst;
+           moreTimeConditionPlan                                                       qConst;
             
-           lessTimeConditionPlan           lessTimeConditionPlan [ 0 0 0 0 0 0 0 ]     qConst;
-           moreTimeConditionPlan           moreTimeConditionPlan [ 0 0 0 0 0 0 0 ]     pConst;
-           
-           lessQConditionPlan              lessQConditionPlan [ 0 0 0 0 0 0 0 ]        qConst;
-           moreQConditionPlan              moreQConditionPlan [ 0 0 0 0 0 0 0 ]        pConst;
+           lessQConditionPlan                                                          qConst;
+           moreQConditionPlan                                                          pConst;
 
-           lessGorConditionPlan            lessGorConditionPlan [ 0 0 0 0 0 0 0 ]      pConst;
-           moreGorConditionPlan            moreGorConditionPlan [ 0 0 0 0 0 0 0 ]      pConst;
-           
-           qConstant	                   qConstant [ 0 3 -1 0 0 0 0 ]                  2e-3;
+           lessGorConditionPlan                                                        pConst;
+           moreGorConditionPlan                                                        pConst;
+               
+           qConstant	                   qConstant [ 0 3 -1 0 0 0 0 ]                     2;
 
-           volume                          volume [ 0 3 0 0 0 0 0 ]	                   12;
-           radius                          radius [ 0 1 0 0 0 0 0 ]	                    1;
+           volume                          volume [ 0 3 0 0 0 0 0 ]	                    2;
+           radius                          radius [ 0 1 0 0 0 0 0 ]	               0.3048;
 	   deltax                          deltax [ 0 1 0 0 0 0 0 ]	                    1;
 	   deltay                          deltay [ 0 1 0 0 0 0 0 ]	                    1;
-           height                          height [ 0 1 0 0 0 0 0 ]	                   12;
+           height                          height [ 0 1 0 0 0 0 0 ]	                    2;
            pb                              pb [ 1 -1 -2 0 0 0 0 ]	                  100;            //bottumhole Pressure// 
 
    } 
