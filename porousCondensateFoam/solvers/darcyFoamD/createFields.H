@@ -33,8 +33,8 @@ volVectorField U
         "U",
         runTime.timeName(),
         mesh,
-        IOobject::NO_READ,
-        IOobject::NO_WRITE
+        IOobject::MUST_READ,
+        IOobject::AUTO_WRITE
     ),
    mesh 
 );
