@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
                 );
 
 	    pEqn.solve();
-            volVectorField U("U",((-M & fvc::grad(p)) + (M & g) * rho ) );
+            U = ( (-M & fvc::grad(p)) + (M & g) * rho ) );
 	    U.correctBoundaryConditions();
           
           //  surfaceScalarField phip("phip",Mf & mesh.Sf());
