@@ -21,9 +21,16 @@ License
     You should have received a copy of the GNU General Public License
     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
+Class
+    Foam::wellcase
+
+Description
+    Generic fluid phase model for the "porousModels" toolbox.
+
+SourceFiles
+    wellcase.C
 
 \*---------------------------------------------------------------------------*/
-
     #ifndef wellcase_H
     #define wellcase_H
 
@@ -73,6 +80,7 @@ protected:
      dimensionedScalar                  deltax_;
      dimensionedScalar                  deltay_;
      dimensionedScalar                      pb_;
+     dimensionedVector             zCoordinate_;
 
 public:
 
@@ -102,7 +110,7 @@ public:
     // Member Functions
     const word& name() const
         {
-            return name_;
+                return name_;
         }
     
     const dimensionedScalar& activeWell() const
@@ -190,12 +198,12 @@ public:
                 return height_;
         }
         
-      const dimensionedScalar& deltax() const
+     const dimensionedScalar& deltax() const
         {
                 return deltax_;
         }
         
-        const dimensionedScalar& deltay() const
+     const dimensionedScalar& deltay() const
         {
                 return deltay_;
         }
@@ -203,7 +211,12 @@ public:
      const dimensionedScalar& pb() const
         {
                 return pb_;
-        }  
+        }
+
+     const dimensionedVector& zCoordinate() const
+        {
+                return zCoordinate_;
+        }    
 };
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

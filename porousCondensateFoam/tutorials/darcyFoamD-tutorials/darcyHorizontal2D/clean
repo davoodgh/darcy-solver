@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#   Script to valid darcyFoamD Solver.
+
+
+# Source tutorial run functions
+. $WM_PROJECT_DIR/bin/tools/CleanFunctions
+
+rm -rf 0/K
+rm -rf 0/WInj1
+rm -rf 0/WPro1
+
+cleanCase

@@ -4,5 +4,5 @@ set -x
 
 # Compiling solvers 
 
-wmake all libraries
+libraries/Allwmake
 wmake all solvers

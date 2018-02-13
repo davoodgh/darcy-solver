@@ -15,7 +15,8 @@ IOdictionary wellboreProperties
 );
 
 
-// Injection1 
+// Injection1
+ 
 autoPtr<wellcase> wellInj1 = wellcase::New(mesh,wellboreProperties,"Inj1");
 const dimensionedScalar& activeWellInj1 = wellInj1->activeWell();
 
@@ -45,6 +46,7 @@ const dimensionedScalar& heightInj1 = wellInj1->height();
 const dimensionedScalar& deltaxInj1 = wellInj1->deltax();
 const dimensionedScalar& deltayInj1 = wellInj1->deltay();
 const dimensionedScalar& pbInj1 = wellInj1->pb();
+const dimensionedVector& zCoordinateInj1 = wellInj1->zCoordinate();
 
 Info<< "Reading field WInj1 (injection wellbore)\n" << endl;
 volScalarField WInj1
@@ -120,7 +122,25 @@ dimensionedScalar  ("explicitSourceTermInj1",dimensionSet (0,0,-1,0,0,0,0),0)
 
 dimensionedScalar qWellInj1("qWellInj1",dimensionSet (0,3,-1,0,0,0,0),0);
 
+volScalarField declineHeadInj1
+(
+    IOobject
+    (
+       "declineHeadInj1",
+        runTime.timeName(),
+        mesh,
+        IOobject::NO_READ,
+        IOobject::NO_WRITE
+    ),
+    mesh,
+dimensionedScalar  ("declineHeadInj1",dimensionSet (1,-1,-2,0,0,0,0),0)   
+);
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+
 // production1
+
 autoPtr<wellcase> wellPro1 = wellcase::New(mesh,wellboreProperties,"Pro1");
 const dimensionedScalar& activeWellPro1 = wellPro1->activeWell();
 
@@ -150,6 +170,8 @@ const dimensionedScalar& heightPro1 = wellPro1->height();
 const dimensionedScalar& deltaxPro1 = wellPro1->deltax();
 const dimensionedScalar& deltayPro1 = wellPro1->deltay();
 const dimensionedScalar& pbPro1 = wellPro1->pb();
+const dimensionedVector& zCoordinatePro1 = wellPro1->zCoordinate();
+
 
 Info<< "Reading field WPro1 (production wellbore)\n" << endl;
 volScalarField WPro1
@@ -224,4 +246,19 @@ dimensionedScalar  ("explicitSourceTermPro1",dimensionSet (0,0,-1,0,0,0,0),0)
 );
  
 dimensionedScalar qWellPro1("qWellPro1",dimensionSet (0,3,-1,0,0,0,0),0);
-////////////////////////////////////////////
+
+volScalarField declineHeadPro1
+(
+    IOobject
+    (
+       "declineHeadPro1",
+        runTime.timeName(),
+        mesh,
+        IOobject::NO_READ,
+        IOobject::NO_WRITE
+    ),
+    mesh,
+dimensionedScalar  ("declineHeadPro1",dimensionSet (1,-1,-2,0,0,0,0),0)   
+);
+
+///////////////////////////////////////////////////////////////////////////////////

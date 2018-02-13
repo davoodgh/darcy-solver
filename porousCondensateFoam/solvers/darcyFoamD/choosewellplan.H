@@ -3,15 +3,18 @@
 
 if ( activeWellInj1.value()==1 )
 {
-       ///////////////////////////////////////////////
+        //////////////////////////////////////////////
         if ( activeTimeConditionInj1.value()==1 )
         { 
+
            if ( runTime.value() <= timeConditionInj1.value() )
            {
+
                if      ( lessTimeConditionPlanInj1 == "pConst" ) 
                {
                        # include "pConstPlanInj1.H"
                }
+
                else if ( lessTimeConditionPlanInj1 == "qConst" ) 
                {
                        # include "qConstPlanInj1.H"
@@ -39,6 +42,7 @@ if ( activeWellInj1.value()==1 )
               {  
                       # include "pConstPlanInj1.H"
               }
+
               else if ( moreTimeConditionPlanInj1 == "qConst" )
               {  
                       # include "qConstPlanInj1.H"
@@ -199,12 +203,15 @@ if ( activeWellPro1.value()==1 )
        ///////////////////////////////////////////////
         if ( activeTimeConditionPro1.value()==1 )
         { 
+
            if ( runTime.value() <= timeConditionPro1.value() )
            {
+
                if      ( lessTimeConditionPlanPro1 == "pConst" )
                { 
                        # include "pConstPlanPro1.H"
                }
+
                else if ( lessTimeConditionPlanPro1 == "qConst" )
                {  
                        # include "qConstPlanPro1.H"
@@ -231,6 +238,7 @@ if ( activeWellPro1.value()==1 )
               { 
                       # include "pConstPlanPro1.H"
               }
+
               else if ( moreTimeConditionPlanPro1 == "qConst" ) 
               { 
                       # include "qConstPlanPro1.H"
@@ -257,10 +265,12 @@ if ( activeWellPro1.value()==1 )
         { 
            if ( qWellPro1.value() <= qConditionPro1.value() )
            {
+
                if      ( lessQConditionPlanPro1 == "pConst" )
                {  
                        # include "pConstPlanPro1.H"
                }
+
                else if ( lessQConditionPlanPro1 == "qConst" ) 
                { 
                        # include "qConstPlanPro1.H"
@@ -287,6 +297,7 @@ if ( activeWellPro1.value()==1 )
               { 
                       # include "pConstPlanPro1.H"
               }
+
               else if ( moreQConditionPlanPro1 == "qConst" ) 
               { 
                       # include "qConstPlanPro1.H"

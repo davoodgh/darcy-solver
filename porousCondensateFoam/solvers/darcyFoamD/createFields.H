@@ -1,3 +1,4 @@
+//////////////////////////////////////////////////////////////
 Info << "Reading field p\n" << endl;
 volScalarField p
 (
@@ -20,7 +21,7 @@ IOdictionary transportProperties
         "transportProperties",
         runTime.constant(),
         mesh,
-        IOobject::MUST_READ_IF_MODIFIED,
+        IOobject::MUST_READ,
         IOobject::NO_WRITE
     )
 );
@@ -66,6 +67,21 @@ dimensionedScalar rho
 transportProperties.lookup("rho")
 );
 
+volVectorField cellCoordinate
+(
+    IOobject
+    (
+        "cellCoordinate",
+        runTime.timeName(),
+        mesh,
+        IOobject::NO_READ,
+        IOobject::NO_WRITE
+    ),
+   mesh,
+   dimensionedVector  ("cellCoordinate",dimensionSet (0,1,0,0,0,0,0),Foam::vector(0,0,0)) 
+);
+cellCoordinate = mesh.C();
+
 volTensorField M ("M",K/mu);
 surfaceTensorField Kf(fvc::interpolate(K,"K"));
 surfaceTensorField Mf ("Mf",Kf/mu);
@@ -73,6 +89,6 @@ surfaceScalarField phig("phig",(rho * Mf & g) & mesh.Sf());
 surfaceTensorField Lf ("Lf",rho * Mf);
 
 
-/////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
 
 

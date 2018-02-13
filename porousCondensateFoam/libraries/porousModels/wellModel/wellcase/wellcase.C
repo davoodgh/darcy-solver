@@ -64,7 +64,8 @@ Foam::wellcase::wellcase
     height_(dict_.lookup("height")),
     deltax_(dict_.lookup("deltax")),
     deltay_(dict_.lookup("deltay")),
-    pb_(dict_.lookup("pb"))
+    pb_(dict_.lookup("pb")),
+    zCoordinate_(dict_.lookup("zCoordinate"))
     
 {
 }
