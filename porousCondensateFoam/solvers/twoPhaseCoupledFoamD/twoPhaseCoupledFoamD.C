@@ -23,10 +23,10 @@ License
 
 
 Application
-    darcyFoamD
+   twoPhaseCoupledFoamD
 
 Description
-    Stationary solver for incompressible single-phase flow in porous medium
+    Stationary coupled solver for incompressible two-phase flow in porous medium
 
 Developers
     Hamid Naderan
@@ -34,10 +34,11 @@ Developers
 
 \*---------------------------------------------------------------------------*/
 
-
 #include "fvCFD.H"
 #include "wellcase.H"
-
+#include "incompressiblePhase.H"
+#include "relativePermeabilityModel.H"
+#include "fvBlockMatrix.H"
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 int main(int argc, char *argv[])
@@ -47,41 +48,32 @@ int main(int argc, char *argv[])
     #include   "createMesh.H"
     #include   "readGravitationalAcceleration.H"
     #include   "createFields.H"
-    # include  "createK_member.H"
+    #include  "createK_member.H"
     #include   "createWellbores.H"
+    #include   "createEquationFields.H"
 
-    // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+   // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
     Info<< "\nStarting time loop\n" << endl;
 
     while (runTime.run())
     {
-            # include "choosewellplan.H" 
-            # include "setDeltaT.H"
-            # include "readPositivePressureControls.H"
+          # include "chooseWellPlan.H" 
+          # include "setDeltaT.H"
+          # include "initConvergenceCheck.H"
              
-            runTime++;
-            Info<< "Time = " << runTime.timeName() << nl << endl;
-	    fvScalarMatrix pEqn
-                (
-                    fvm::laplacian(-Mf,p) + fvc::div(phig) + fvm::Sp(coefImplicitSourcePro1*coefPConstantPro1*WPro1/volumePro1,p)
-                   + fvm::Sp(coefImplicitSourceInj1*coefPConstantInj1*WInj1/volumeInj1,p) - coefExplicitSourcePro1*explicitSourceTermPro1  
-                   - coefExplicitSourceInj1*explicitSourceTermInj1  
-                );
-        
-            pEqn.setReference(pRefCell, pRefValue);
-	    pEqn.solve();
-            U = ( -M & fvc::grad(p) ) + (M & g) * rho;
-	    U.correctBoundaryConditions();
-            //  surfaceScalarField phip("phip",Mf & mesh.Sf());
+          runTime++;
+          Info<< "Time = " << runTime.timeName() << nl << endl;
+
+	  # include "solvecoupledEquation.H" 
             
-            runTime.write();
-            Info<< "ExecutionTime = " << runTime.elapsedCpuTime() << " s"
-            << "  ClockTime = " << runTime.elapsedClockTime() << " s"
-            << nl << endl;
+          runTime.write();
+          Info<< "ExecutionTime = " << runTime.elapsedCpuTime() << " s"
+          << "  ClockTime = " << runTime.elapsedClockTime() << " s"
+          << nl << endl;
     }
 
-    return 0;
+    return (0);
 }
 
 // ************************************************************************* //
