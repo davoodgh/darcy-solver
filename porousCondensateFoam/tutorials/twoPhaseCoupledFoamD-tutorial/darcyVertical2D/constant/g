@@ -5,36 +5,18 @@
 |   \\  /    A nd           | Web:         http://www.foam-extend.org         |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
-FoamFile
 {
     version     2.0;
     format      ascii;
-    class       volScalarField;
-    location    "0";
-    object      p;
+    class       uniformDimensionedVectorField;
+    location    "constant";
+    object      g;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [1 -1 -2 0 0 0 0];
+dimensions      [0 1 -2 0 0 0 0];
 
-internalField   uniform 0;
-
-boundaryField
-{
-
-    walls
-     {
-        
-        type            darcyGradPressureAniso;
-       	value		uniform 0;
-     }
-
-    topAndBottume
-    {
-        type            empty;
-    }
-  
-}
+value           (0 0 -9.81);
 
 
 // ************************************************************************* //

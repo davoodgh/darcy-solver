@@ -9,31 +9,41 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       volScalarField;
+    class       volVectorField;
     location    "0";
-    object      p;
+    object      Ua;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [1 -1 -2 0 0 0 0];
 
-internalField   uniform 0;
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform (0 0 0);
 
 boundaryField
 {
+    top
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+    
+    bottume
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
 
     walls
-     {
-        
-        type            darcyGradPressureAniso;
-       	value		uniform 0;
-     }
-
-    topAndBottume
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+    
+    frontAndBack
     {
         type            empty;
     }
-  
 }
 
 

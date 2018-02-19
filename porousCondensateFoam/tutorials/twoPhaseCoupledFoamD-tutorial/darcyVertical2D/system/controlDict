@@ -9,32 +9,41 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       volScalarField;
-    location    "0";
-    object      p;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [1 -1 -2 0 0 0 0];
+application     twoPhaseCoupledFoamD;
 
-internalField   uniform 0;
+startFrom       startTime;
 
-boundaryField
-{
+startTime       0;
 
-    walls
-     {
-        
-        type            darcyGradPressureAniso;
-       	value		uniform 0;
-     }
+stopAt          endTime;
 
-    topAndBottume
-    {
-        type            empty;
-    }
-  
-}
+endTime         1000;
+
+deltaT          1;
+
+writeControl    timeStep;
+
+writeInterval   100;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  12;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   12;
+
+runTimeModifiable true;
 
 
 // ************************************************************************* //
