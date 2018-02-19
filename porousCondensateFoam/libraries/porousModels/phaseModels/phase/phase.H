@@ -22,18 +22,18 @@ License
     along with foam-extend.  If not, see <http://www.gnu.org/licenses/>.
 
 Class
-    Foam::well
+    Foam::phase
 
 Description
     Generic phase model for the "porousModels" toolbox.
 
 SourceFiles
-    well.C
+    phase.C
 
 \*---------------------------------------------------------------------------*/
 
-    #ifndef well_H
-    #define well_H
+    #ifndef phase_H
+    #define phase_H
 
     #include "dictionary.H"
     #include "fvMesh.H"
@@ -43,9 +43,11 @@ SourceFiles
 namespace Foam
 {
 
-  
+    /*---------------------------------------------------------------------------* \
+                             Class fluidPhase Declaration
+    \*---------------------------------------------------------------------------*/
 
-class well
+class phase
 {
 
 protected:
@@ -56,32 +58,32 @@ protected:
     // Private data
     dictionary dict_;
 
-    //- Name of well
+    //- Name of phase
     word name_;
 
 public:
 
     // Constructors
 
-    well
+    phase
     (
         const fvMesh& mesh,
-        const dictionary& wellboreProperties,
-        const word& wellName
+        const dictionary& transportProperties,
+        const word& phaseName
     );
 
     // Selectors
 
-  
-    static autoPtr<well> New
+    //- Return a reference to the selected turbulence model
+    static autoPtr<phase> New
     (
         const fvMesh& mesh,
-        const dictionary& wellboreProperties,
-        const word& wellName
+        const dictionary& transportProperties,
+        const word& phaseName
     );
 
     //- Destructor
-    virtual ~well();
+    virtual ~phase();
 
     // Member Functions
     const word& name() const

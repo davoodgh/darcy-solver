@@ -1,8 +1,14 @@
 
-
 wellModel/well/well.C
-
 wellModel/wellcase/wellcase.C
+
+phaseModels/phase/phase.C
+phaseModels/fluidPhase/fluidPhase.C
+phaseModels/incompressiblePhase/incompressiblePhase.C
+
+relativePermeabilityModels/relativePermeabilityModel/relativePermeabilityModel.C
+relativePermeabilityModels/relativePermeabilityModel/relativePermeabilityModelNew.C
+relativePermeabilityModels/BrooksAndCorey/krBrooksAndCorey.C
 
 LIB = $(FOAM_USER_LIBBIN)/libporousModels
 

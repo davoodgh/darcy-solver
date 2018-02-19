@@ -22,81 +22,86 @@ License
     along with foam-extend.  If not, see <http://www.gnu.org/licenses/>.
 
 Class
-    Foam::well
+    Foam::relativePermeabilityModels::krBrooksAndCorey
 
 Description
-    Generic phase model for the "porousModels" toolbox.
+    Standard Brooks and Corey relative permeability model.
 
 SourceFiles
-    well.C
+    krBrooksAndCorey.C
 
 \*---------------------------------------------------------------------------*/
 
-    #ifndef well_H
-    #define well_H
+#ifndef krBrooksAndCorey_H
+#define krBrooksAndCorey_H
 
-    #include "dictionary.H"
-    #include "fvMesh.H"
+#include "relativePermeabilityModel.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 namespace Foam
 {
-
-  
-
-class well
+namespace relativePermeabilityModels
 {
 
-protected:
+/*---------------------------------------------------------------------------*\
+    Class krBrooksAndCorey Declaration
+    \*---------------------------------------------------------------------------*/
 
-    //- reference to the mesh
-    const fvMesh& mesh_;
+class krBrooksAndCorey
+:
+    public relativePermeabilityModel
+{
+    //- Private data
+    volScalarField Smin_;
+    volScalarField Smax_;
 
-    // Private data
-    dictionary dict_;
+    dictionary krBrooksAndCoreyCoeffs_;
+    volScalarField n_;
 
-    //- Name of well
-    word name_;
+    //- effective saturation of phase b
+    volScalarField Se_;
 
+    //- end points
+    volScalarField kramax_;
+    volScalarField krbmax_;
+
+        
 public:
+
+    //- Runtime type information
+    TypeName("BrooksAndCorey");
 
     // Constructors
 
-    well
+    //- Construct from components
+    krBrooksAndCorey
     (
-        const fvMesh& mesh,
-        const dictionary& wellboreProperties,
-        const word& wellName
-    );
-
-    // Selectors
-
-  
-    static autoPtr<well> New
-    (
-        const fvMesh& mesh,
-        const dictionary& wellboreProperties,
-        const word& wellName
+        const word& name,
+        const dictionary& transportProperties,
+        const volScalarField& Sb
     );
 
     //- Destructor
-    virtual ~well();
+    ~krBrooksAndCorey()
+        {}
 
     // Member Functions
-    const word& name() const
-        {
-            return name_;
-        }
 
-    const fvMesh& mesh() const
+    //- Correct the relative permeabilities
+    void correct()
         {
-            return mesh_;
+            Se_==(Sb_-Smin_)/(Smax_-Smin_);
+            kra_ = kramax_* pow((scalar(1)-Se_),n_);
+            krb_ = krbmax_ * pow(Se_,n_);
+	
         }
 
 };
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+} // End namespace relativePermeabilityModels
 
 } // End namespace Foam
 

@@ -21,87 +21,68 @@ License
     You should have received a copy of the GNU General Public License
     along with foam-extend.  If not, see <http://www.gnu.org/licenses/>.
 
-Class
-    Foam::well
-
-Description
-    Generic phase model for the "porousModels" toolbox.
-
-SourceFiles
-    well.C
-
 \*---------------------------------------------------------------------------*/
+#include "fluidPhase.H"
+#include "fixedValueFvPatchFields.H"
+#include "linear.H"
 
-    #ifndef well_H
-    #define well_H
 
-    #include "dictionary.H"
-    #include "fvMesh.H"
+// * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
-namespace Foam
-{
-
-  
-
-class well
-{
-
-protected:
-
-    //- reference to the mesh
-    const fvMesh& mesh_;
-
-    // Private data
-    dictionary dict_;
-
-    //- Name of well
-    word name_;
-
-public:
-
-    // Constructors
-
-    well
+Foam::fluidPhase::fluidPhase
+(
+    const fvMesh& mesh,
+    const dictionary& transportProperties,
+    const word& phaseName
+)
+    :  
+    phase(mesh,transportProperties,phaseName),
+    rho_
     (
-        const fvMesh& mesh,
-        const dictionary& wellboreProperties,
-        const word& wellName
-    );
-
-    // Selectors
-
-  
-    static autoPtr<well> New
+        IOobject
+        (
+            "rho" + phaseName,
+            mesh.time().timeName(),
+            mesh,
+            IOobject::READ_IF_PRESENT,
+            IOobject::AUTO_WRITE
+        ),
+        mesh,
+        dimensionedScalar("",dimensionSet(1,-3,0,0,0,0,0),1)
+    ),
+    U_
     (
-        const fvMesh& mesh,
-        const dictionary& wellboreProperties,
-        const word& wellName
+        IOobject
+        (
+            "U" + phaseName,
+            mesh_.time().timeName(),
+            mesh_,
+            IOobject::MUST_READ,
+            IOobject::AUTO_WRITE
+        ),
+        mesh_
+    )
+{
+}
+
+
+Foam::autoPtr<Foam::fluidPhase> Foam::fluidPhase::New
+(
+    const fvMesh& mesh,
+    const dictionary& transportProperties,
+    const word& phaseName
+)
+{
+    return autoPtr<fluidPhase>
+    (
+        new fluidPhase(mesh, transportProperties, phaseName)
     );
+}
 
-    //- Destructor
-    virtual ~well();
+// * * * * * * * * * * * * * * * * Destructor  * * * * * * * * * * * * * * * //
 
-    // Member Functions
-    const word& name() const
-        {
-            return name_;
-        }
+Foam::fluidPhase::~fluidPhase()
+{}
 
-    const fvMesh& mesh() const
-        {
-            return mesh_;
-        }
-
-};
-
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
-} // End namespace Foam
-
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
-#endif
 
 // ************************************************************************* //

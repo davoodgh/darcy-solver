@@ -21,87 +21,42 @@ License
     You should have received a copy of the GNU General Public License
     along with foam-extend.  If not, see <http://www.gnu.org/licenses/>.
 
-Class
-    Foam::well
-
-Description
-    Generic phase model for the "porousModels" toolbox.
-
-SourceFiles
-    well.C
-
 \*---------------------------------------------------------------------------*/
 
-    #ifndef well_H
-    #define well_H
-
-    #include "dictionary.H"
-    #include "fvMesh.H"
+#include "relativePermeabilityModel.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-namespace Foam
+Foam::autoPtr<Foam::relativePermeabilityModel> Foam::relativePermeabilityModel::New
+(
+    const word& name,
+    const dictionary& transportProperties,
+    const volScalarField& Sb
+)
 {
+    const word modelType(transportProperties.lookup("relativePermeabilityModel"));
 
-  
+    Info<< "Selecting relativePermeability model => " << modelType << "\n" << endl;
 
-class well
-{
+    dictionaryConstructorTable::iterator cstrIter =
+        dictionaryConstructorTablePtr_->find(modelType);
 
-protected:
+    if (cstrIter == dictionaryConstructorTablePtr_->end())
+    {
+        FatalErrorIn
+            (
+                "relativePermeabilityModel::New(const volVectorField&, "
+                "const surfaceScalarField&)"
+            )   << "Unknown relativePermeabilityModel type "
+                << modelType << nl << nl
+                << "Valid relativePermeabilityModels are : " << endl
+                << dictionaryConstructorTablePtr_->sortedToc()
+                << exit(FatalError);
+    }
 
-    //- reference to the mesh
-    const fvMesh& mesh_;
+    return autoPtr<relativePermeabilityModel>
+        (cstrIter()(name, transportProperties,Sb));
+}
 
-    // Private data
-    dictionary dict_;
-
-    //- Name of well
-    word name_;
-
-public:
-
-    // Constructors
-
-    well
-    (
-        const fvMesh& mesh,
-        const dictionary& wellboreProperties,
-        const word& wellName
-    );
-
-    // Selectors
-
-  
-    static autoPtr<well> New
-    (
-        const fvMesh& mesh,
-        const dictionary& wellboreProperties,
-        const word& wellName
-    );
-
-    //- Destructor
-    virtual ~well();
-
-    // Member Functions
-    const word& name() const
-        {
-            return name_;
-        }
-
-    const fvMesh& mesh() const
-        {
-            return mesh_;
-        }
-
-};
-
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
-} // End namespace Foam
-
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
-#endif
 
 // ************************************************************************* //

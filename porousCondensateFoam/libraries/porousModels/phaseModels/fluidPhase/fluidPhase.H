@@ -22,76 +22,85 @@ License
     along with foam-extend.  If not, see <http://www.gnu.org/licenses/>.
 
 Class
-    Foam::well
+    Foam::fluidPhase
 
 Description
-    Generic phase model for the "porousModels" toolbox.
+    Generic fluid phase model for the "porousModels" toolbox.
 
 SourceFiles
-    well.C
+    fluidPhase.C
 
 \*---------------------------------------------------------------------------*/
 
-    #ifndef well_H
-    #define well_H
 
-    #include "dictionary.H"
-    #include "fvMesh.H"
+    #ifndef fluidPhase_H
+    #define fluidPhase_H
+
+    #include "phase.H"
+    #include "dimensionedScalar.H"
+    #include "volFields.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 namespace Foam
 {
 
-  
+    /*---------------------------------------------------------------------------* \
+                             Class fluidPhase Declaration
+    \*---------------------------------------------------------------------------*/
 
-class well
+class fluidPhase
+:
+    public phase
 {
-
+   
 protected:
 
-    //- reference to the mesh
-    const fvMesh& mesh_;
+    //- phase density
+    volScalarField rho_;
 
-    // Private data
-    dictionary dict_;
-
-    //- Name of well
-    word name_;
+    //- phase velocity
+    volVectorField U_;
 
 public:
 
     // Constructors
 
-    well
+    fluidPhase
     (
         const fvMesh& mesh,
-        const dictionary& wellboreProperties,
-        const word& wellName
+        const dictionary& transportProperties,
+        const word& phaseName
     );
+
 
     // Selectors
 
-  
-    static autoPtr<well> New
+    //- Return a reference to the selected turbulence model
+    static autoPtr<fluidPhase> New
     (
         const fvMesh& mesh,
-        const dictionary& wellboreProperties,
-        const word& wellName
+        const dictionary& transportProperties,
+        const word& phaseName
     );
 
     //- Destructor
-    virtual ~well();
+    virtual ~fluidPhase();
 
     // Member Functions
     const word& name() const
         {
             return name_;
         }
-
-    const fvMesh& mesh() const
+    
+    const volVectorField& U() const
         {
-            return mesh_;
+            return U_;
+        }
+
+    volVectorField& U()
+        {
+            return U_;
         }
 
 };

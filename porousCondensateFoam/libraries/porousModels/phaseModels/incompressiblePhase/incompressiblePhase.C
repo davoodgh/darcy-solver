@@ -23,39 +23,68 @@ License
 
 \*---------------------------------------------------------------------------*/
 
+#include "incompressiblePhase.H"
+#include "fixedValueFvPatchFields.H"
+#include "linear.H"
 
-#include "well.H"
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
-Foam::well::well
+Foam::incompressiblePhase::incompressiblePhase
 (
     const fvMesh& mesh,
-    const dictionary& wellboreProperties,
-    const word& wellName
+    const dictionary& transportProperties,
+    const word& phaseName
 )
-:  
-    mesh_(mesh),
-    dict_(wellboreProperties.subDict("well."+wellName)),
-    name_(wellName)
-{
+:
+    fluidPhase(mesh,transportProperties,phaseName),
+    mu_(dict_.lookup("mu")),
+    rho_(dict_.lookup("rho"))
+{   
+    const word phiName = "phi" + phaseName;
+
+    wordList phiTypes
+        (
+            U_.boundaryField().size(),
+            calculatedFvPatchScalarField::typeName
+        );
+
+    phiPtr_.reset
+        (
+            new surfaceScalarField
+            (
+                IOobject
+                (
+                    phiName,
+                    mesh.time().timeName(),
+                    mesh,
+                    IOobject::NO_READ,
+                    IOobject::AUTO_WRITE
+                ),
+                Foam::linearInterpolate(U_) & mesh.Sf(),
+                phiTypes
+            )
+        );
 }
 
-Foam::autoPtr<Foam::well> Foam::well::New
+
+Foam::autoPtr<Foam::incompressiblePhase> Foam::incompressiblePhase::New
 (
     const fvMesh& mesh,
-    const dictionary& wellboreProperties,
-    const word& wellName
+    const dictionary& transportProperties,
+    const word& phaseName
 )
 {
-    return autoPtr<well>
+    return autoPtr<incompressiblePhase>
     (
-        new well(mesh, wellboreProperties, "well."+wellName)
+        new incompressiblePhase(mesh, transportProperties, phaseName)
     );
 }
 
 // * * * * * * * * * * * * * * * * Destructor  * * * * * * * * * * * * * * * //
 
-Foam::well::~well()
+Foam::incompressiblePhase::~incompressiblePhase()
 {}
 
+
+// ************************************************************************* //

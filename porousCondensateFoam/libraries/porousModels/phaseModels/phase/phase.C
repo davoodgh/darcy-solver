@@ -23,39 +23,38 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-
-#include "well.H"
+#include "phase.H"
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
-Foam::well::well
+Foam::phase::phase
 (
     const fvMesh& mesh,
-    const dictionary& wellboreProperties,
-    const word& wellName
+    const dictionary& transportProperties,
+    const word& phaseName
 )
 :  
     mesh_(mesh),
-    dict_(wellboreProperties.subDict("well."+wellName)),
-    name_(wellName)
+    dict_(transportProperties.subDict("phase."+phaseName)),
+    name_(phaseName)
 {
 }
 
-Foam::autoPtr<Foam::well> Foam::well::New
+Foam::autoPtr<Foam::phase> Foam::phase::New
 (
     const fvMesh& mesh,
-    const dictionary& wellboreProperties,
-    const word& wellName
+    const dictionary& transportProperties,
+    const word& phaseName
 )
 {
-    return autoPtr<well>
+    return autoPtr<phase>
     (
-        new well(mesh, wellboreProperties, "well."+wellName)
+        new phase(mesh, transportProperties, "phase."+phaseName)
     );
 }
 
 // * * * * * * * * * * * * * * * * Destructor  * * * * * * * * * * * * * * * //
 
-Foam::well::~well()
+Foam::phase::~phase()
 {}
 

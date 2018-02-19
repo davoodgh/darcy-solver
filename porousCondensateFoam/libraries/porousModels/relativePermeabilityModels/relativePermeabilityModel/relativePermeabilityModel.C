@@ -21,87 +21,57 @@ License
     You should have received a copy of the GNU General Public License
     along with foam-extend.  If not, see <http://www.gnu.org/licenses/>.
 
-Class
-    Foam::well
-
-Description
-    Generic phase model for the "porousModels" toolbox.
-
-SourceFiles
-    well.C
-
 \*---------------------------------------------------------------------------*/
 
-    #ifndef well_H
-    #define well_H
+#include "relativePermeabilityModel.H"
 
-    #include "dictionary.H"
-    #include "fvMesh.H"
-
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+// * * * * * * * * * * * * * * Static Data Members * * * * * * * * * * * * * //
 
 namespace Foam
 {
+defineTypeNameAndDebug(relativePermeabilityModel, 0);
+defineRunTimeSelectionTable(relativePermeabilityModel, dictionary);
+}
 
-  
 
-class well
-{
+// * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
-protected:
-
-    //- reference to the mesh
-    const fvMesh& mesh_;
-
-    // Private data
-    dictionary dict_;
-
-    //- Name of well
-    word name_;
-
-public:
-
-    // Constructors
-
-    well
+Foam::relativePermeabilityModel::relativePermeabilityModel
+(
+    const word& name,
+    const dictionary& transportProperties,
+    const volScalarField& Sb
+)
+    :
+    name_(name),
+    transportProperties_(transportProperties),
+    Sb_(Sb),
+    kra_
     (
-        const fvMesh& mesh,
-        const dictionary& wellboreProperties,
-        const word& wellName
-    );
-
-    // Selectors
-
-  
-    static autoPtr<well> New
+        IOobject
+        (
+            name,
+            Sb_.time().timeName(),
+            Sb_.db(),
+            IOobject::NO_READ,
+            IOobject::NO_WRITE
+        ),
+        Sb.mesh(),
+        dimensionSet(0,0,0,0,0)
+    ),
+    krb_
     (
-        const fvMesh& mesh,
-        const dictionary& wellboreProperties,
-        const word& wellName
-    );
-
-    //- Destructor
-    virtual ~well();
-
-    // Member Functions
-    const word& name() const
-        {
-            return name_;
-        }
-
-    const fvMesh& mesh() const
-        {
-            return mesh_;
-        }
-
-};
-
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
-} // End namespace Foam
-
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
-#endif
+        IOobject
+        (
+            name,
+            Sb_.time().timeName(),
+            Sb_.db(),
+            IOobject::NO_READ,
+            IOobject::NO_WRITE
+        ),
+        Sb.mesh(),
+        dimensionSet(0,0,0,0,0)
+    )
+{}
 
 // ************************************************************************* //
