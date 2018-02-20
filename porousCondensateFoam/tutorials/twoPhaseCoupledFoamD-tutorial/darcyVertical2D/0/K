@@ -9,15 +9,35 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       uniformDimensionedVectorField;
-    location    "constant";
-    object      g;
+    class       volTensorField;
+    location    "0";
+    object      K;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 1 -2 0 0 0 0];
+dimensions      [0 2 0 0 0 0 0];
 
-value           (0 0 -9.81);
+internalField   uniform (1e-13 0 0 0 1e-13 0 0 0 1e-13);
+
+boundaryField
+{
+    top
+    {
+        type            zeroGradient;
+    }
+    bottume
+    {
+        type            zeroGradient;
+    }
+    walls
+    {
+        type            zeroGradient;
+    }
+    frontAndBack
+    {
+        type            empty;
+    }
+}
 
 
 // ************************************************************************* //

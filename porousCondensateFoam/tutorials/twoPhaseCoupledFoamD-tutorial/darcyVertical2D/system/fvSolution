@@ -73,14 +73,14 @@ blockSolver
 {
     convergence 1e-6;
 
-    pRefCell 0;
-    pRefValue 0;
+    pRefCell 39;
+    pRefValue 8000000;
 }
 
 fieldBounds
 {
     Sb      0    1 ;
-    p      -5e4 5e4;
+    p      -5e8 5e8;
 }
 
 relaxationFactors

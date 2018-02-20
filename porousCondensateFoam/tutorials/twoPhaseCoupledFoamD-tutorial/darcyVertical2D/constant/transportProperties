@@ -15,10 +15,10 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-eps		eps [0  0  0 0 0 0 0]	   0.5;
+eps		eps [0  0  0 0 0 0 0]	      0.5;
 	
-Sbmin		Sbmin [0  0  0 0 0 0 0]	     0;
-Sbmax		Sbmax [0  0  0 0 0 0 0]	0.9999;
+Sbmin		Sbmin [0  0  0 0 0 0 0]	      0.1;
+Sbmax		Sbmax [0  0  0 0 0 0 0]    0.9999;
 
 phase.a
 {
@@ -38,13 +38,10 @@ relativePermeabilityModel   BrooksAndCorey;
 BrooksAndCoreyCoeffs
 {
     // kr 
-    n 3;
-
-    // pc 
-    Sbminpc Sbminpc [0 0 0 0 0 0 0] 0;
-    Sbmaxpc Sbmaxpc [0 0 0 0 0 0 0] 1;
-    pc0 pc0 [1 -1 -2 0 0 0 0] 5;
-    alpha	0.2;	
+    n 3; 
+    kramax kramax [0 0 0 0 0 0 0] 1;
+    krbmax krbmax [0 0 0 0 0 0 0] 1;
+  	
 }
 
 // ************************************************************************* //

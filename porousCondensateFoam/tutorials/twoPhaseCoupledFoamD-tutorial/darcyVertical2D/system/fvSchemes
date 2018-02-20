@@ -37,11 +37,13 @@ laplacianSchemes
 
 interpolationSchemes
 {
-    default		none;
+    default		linear;
     K			harmonic;
     kra	                upwind phia;
     krb         	upwind phib;
     flux(U)             linear;
+    Up                  linear;
+    //grad(p)             linear;
 }
 
 snGradSchemes
@@ -49,11 +51,11 @@ snGradSchemes
     default         corrected;
 }
 
-fluxRequired
-{
-    default         no;
-    p           ;
-}
+//fluxRequired
+//{
+    //default         no;
+    //p           ;
+//}
 
 
 // ************************************************************************* //
