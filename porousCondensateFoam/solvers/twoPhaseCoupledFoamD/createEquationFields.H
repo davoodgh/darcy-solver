@@ -11,6 +11,8 @@ surfaceScalarField kraf ("kraf",fvc::interpolate(kra,"kra"));
 surfaceScalarField krbf ("krbf",fvc::interpolate(krb,"krb"));
 surfaceScalarField Fbf ("Fbf",(krbf/mub) / ((kraf/mua) + (krbf/mub)));
 
+volTensorField M ("M", (K*kra/mua) + (K*krb/mub) );
+
 //- mobility and fractional flow 
 surfaceTensorField Maf ("Maf",Kf*kraf/mua);
 surfaceTensorField Mbf ("Mbf",Kf*krbf/mub);

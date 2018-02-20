@@ -1,5 +1,6 @@
-    phip = pEqn.flux();
 
+    Up = ( -M & fvc::grad(p) );
+    phip = (fvc::interpolate(Up)) & mesh.Sf();
     phi = phip+phiG;
 
     U = fvc::reconstruct(phi);

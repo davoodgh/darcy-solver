@@ -65,15 +65,15 @@ dimensionedScalar eps
 transportProperties.lookup("eps")
 );
 
-dimensionedScalar Sbmin
-(
-transportProperties.lookup("Sbmin")
-);
+//dimensionedScalar Sbmin
+//(
+//transportProperties.lookup("Sbmin")
+//);
 
-dimensionedScalar Sbmax
-(
-transportProperties.lookup("Sbmax")
-);
+//dimensionedScalar Sbmax
+//(
+//transportProperties.lookup("Sbmax")
+//);
 
 
 /////////////////////////////////////////
@@ -110,11 +110,23 @@ volVectorField U
     Ua + Ub
 );
 
+volVectorField Up
+(
+    IOobject
+    (
+        "Up",
+        runTime.timeName(),
+        mesh,
+        IOobject::NO_READ,
+        IOobject::NO_WRITE
+    ),
+ mesh,
+dimensionedVector  ("Up",dimensionSet (0,1,-1,0,0,0,0),Foam::vector(0,0,0))
+);
+
 #include "createPhi.H"
 surfaceScalarField phip = phi;
 ///////////////////////////////////////////////
-
-
 
 volVectorField cellCoordinate
 (

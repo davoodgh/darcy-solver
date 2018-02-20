@@ -7,6 +7,8 @@ kraf = fvc::interpolate(kra,"kra");
 krbf = fvc::interpolate(krb,"krb");
 Fbf = (krbf/mub) / ((kraf/mua) + (krbf/mub));
 
+M = (K*kra/mua) + (K*krb/mub);
+
 //- mobility computation 
 Maf = Kf*kraf/mua;
 Laf = rhoa*Kf*kraf/mua;	
