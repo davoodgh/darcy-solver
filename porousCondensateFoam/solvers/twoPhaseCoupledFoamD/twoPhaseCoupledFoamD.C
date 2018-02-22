@@ -65,7 +65,8 @@ int main(int argc, char *argv[])
           runTime++;
           Info<< "Time = " << runTime.timeName() << nl << endl;
 
-	  # include "solvecoupledEquation.H" 
+	  # include "solvecoupledEquation.H"
+          Sa = 1- Sb; 
             
           runTime.write();
           Info<< "ExecutionTime = " << runTime.elapsedCpuTime() << " s"

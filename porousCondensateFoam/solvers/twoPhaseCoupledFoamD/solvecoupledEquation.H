@@ -5,6 +5,7 @@
         # include "readFieldBounds.H" 
 
         p.storePrevIter();
+        Sb.storePrevIter();
 
         // Initialize the X block system (matrix, source and reference to X)
         fvBlockMatrix<vector2> XEqn(X);
@@ -31,5 +32,6 @@
         #include "boundPSb.H"
 
         p.relax();
+        Sb.relax();
 
  }

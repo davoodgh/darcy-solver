@@ -23,6 +23,6 @@ surfaceTensorField Mf ("Mf",Maf+Mbf);
 surfaceTensorField Lf ("Lf",Laf+Lbf);
 
 surfaceScalarField phiG("phiG",(Lf & g) & mesh.Sf());
-surfaceScalarField phiGSb("phiG",(Lbf & g) & mesh.Sf());
+surfaceScalarField phiGSb("phiGSb",(Lbf & g) & mesh.Sf());
 
 

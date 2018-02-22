@@ -27,6 +27,19 @@ volScalarField Sb
     mesh
 );
 
+volScalarField Sa
+(
+    IOobject
+    (
+        "Sa",
+        runTime.timeName(),
+        mesh,
+        IOobject::NO_READ,
+        IOobject::AUTO_WRITE
+    ),
+    mesh,
+    dimensionedScalar("",dimensionSet(0,0,0,0,0),0)
+);
 
 
 Info << "Reading field K\n" << endl;
@@ -64,17 +77,6 @@ dimensionedScalar eps
 (
 transportProperties.lookup("eps")
 );
-
-//dimensionedScalar Sbmin
-//(
-//transportProperties.lookup("Sbmin")
-//);
-
-//dimensionedScalar Sbmax
-//(
-//transportProperties.lookup("Sbmax")
-//);
-
 
 /////////////////////////////////////////
 
